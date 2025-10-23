@@ -1,0 +1,380 @@
+/**
+ * MDB Category Scroller Widget Styles
+ * 
+ * @package MDB Custom Widgets
+ * @since 1.0.0
+ * 
+ * High Specificity Styles - Override Elementor
+ */
+
+/* CSS Custom Properties (Variables) */
+:root {
+  /* Colors */
+  --mdb-category-primary-color: #444D5F;
+  --mdb-category-hover-shadow-color: rgba(0, 124, 186, 0.3);
+  --mdb-category-focus-color: #007cba;
+  --mdb-category-text-muted: #666;
+  --mdb-category-white: #ffffff;
+  --mdb-category-transparent: transparent;
+
+  /* Spacing */
+  --mdb-category-gap: 30px;
+  --mdb-category-gap-tablet: 25px;
+  --mdb-category-gap-mobile: 20px;
+  --mdb-category-padding: 15px;
+  --mdb-category-padding-tablet: 10px;
+  --mdb-category-padding-mobile: 5px;
+  --mdb-category-content-padding: 25px 20px;
+  --mdb-category-content-padding-tablet: 20px 15px;
+  --mdb-category-content-padding-mobile: 15px 12px;
+
+  /* Navigation Buttons */
+  --mdb-category-nav-size: 60px;
+  --mdb-category-nav-size-tablet: 36px;
+  --mdb-category-nav-size-mobile: 32px;
+  --mdb-category-nav-border: 2px;
+  --mdb-category-nav-gap: 10px;
+  --mdb-category-nav-gap-mobile: 8px;
+  --mdb-category-nav-font-size: 16px;
+  --mdb-category-nav-font-size-tablet: 14px;
+  --mdb-category-nav-font-size-mobile: 12px;
+
+  /* Image Heights */
+  --mdb-category-image-height: 350px;
+  --mdb-category-image-height-tablet: 180px;
+  --mdb-category-image-height-mobile: 150px;
+  --mdb-category-image-height-small-mobile: 200px;
+
+  /* Typography */
+  --mdb-category-font-size: 2rem;
+  --mdb-category-font-size-tablet: 1rem;
+  --mdb-category-font-size-mobile: 0.9rem;
+  --mdb-category-line-height: 1.4;
+
+  /* Layout */
+  --mdb-category-header-margin: 20px;
+  --mdb-category-item-margin: 10px 0;
+  --mdb-category-empty-padding: 40px 20px;
+
+  /* Transitions */
+  --mdb-category-transition: all 0.3s ease;
+
+  /* Transforms */
+  --mdb-category-hover-translate: translateY(-2px);
+  --mdb-category-image-scale: scale(1.05);
+
+  /* Shadows */
+  --mdb-category-hover-shadow: 0 4px 8px var(--mdb-category-hover-shadow-color);
+
+  /* Opacity */
+  --mdb-category-disabled-opacity: 0.5;
+
+  /* Border Radius */
+  --mdb-category-border-radius: 0;
+  --mdb-category-nav-border-radius: 50%;
+
+  /* Focus Outline */
+  --mdb-category-focus-outline: 2px solid var(--mdb-category-focus-color);
+  --mdb-category-focus-offset: 2px;
+}
+
+/* Main Container */
+.elementor-widget-mdb-category-scroller .mdb-category-scroller-widget,
+.mdb-category-scroller-widget.mdb-category-scroller-widget {
+  position: relative !important;
+  width: 100% !important;
+}
+
+/* Header with Navigation */
+.elementor-widget-mdb-category-scroller .mdb-category-scroller-header,
+.mdb-category-scroller-widget .mdb-category-scroller-header {
+  display: flex !important;
+  justify-content: flex-end !important;
+  align-items: center !important;
+  margin-bottom: var(--mdb-category-header-margin) !important;
+}
+
+/* Navigation Buttons Container */
+.elementor-widget-mdb-category-scroller .mdb-category-scroller-navigation,
+.mdb-category-scroller-widget .mdb-category-scroller-navigation {
+  display: flex !important;
+  gap: var(--mdb-category-nav-gap) !important;
+}
+
+/* Navigation Buttons */
+.elementor-widget-mdb-category-scroller .mdb-category-nav-btn,
+.mdb-category-scroller-widget .mdb-category-nav-btn {
+  width: var(--mdb-category-nav-size) !important;
+  height: var(--mdb-category-nav-size) !important;
+  border: var(--mdb-category-nav-border) solid var(--mdb-category-primary-color) !important;
+  background: var(--mdb-category-transparent) !important;
+  color: var(--mdb-category-primary-color) !important;
+  border-radius: var(--mdb-category-nav-border-radius) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  cursor: pointer !important;
+  transition: var(--mdb-category-transition) !important;
+  font-size: var(--mdb-category-nav-font-size) !important;
+  font-weight: normal !important;
+}
+
+.elementor-widget-mdb-category-scroller .mdb-category-nav-btn:hover,
+.mdb-category-scroller-widget .mdb-category-nav-btn:hover {
+  background: var(--mdb-category-primary-color) !important;
+  color: var(--mdb-category-white) !important;
+  transform: var(--mdb-category-hover-translate) !important;
+  box-shadow: var(--mdb-category-hover-shadow) !important;
+}
+
+.elementor-widget-mdb-category-scroller .mdb-category-nav-btn:disabled,
+.mdb-category-scroller-widget .mdb-category-nav-btn:disabled {
+  opacity: var(--mdb-category-disabled-opacity) !important;
+  cursor: not-allowed !important;
+  transform: none !important;
+  box-shadow: none !important;
+}
+
+.elementor-widget-mdb-category-scroller .mdb-category-nav-btn:focus,
+.mdb-category-scroller-widget .mdb-category-nav-btn:focus {
+  outline: var(--mdb-category-focus-outline) !important;
+  outline-offset: var(--mdb-category-focus-offset) !important;
+}
+
+/* Scroller Container */
+.elementor-widget-mdb-category-scroller .mdb-category-scroller-container,
+.mdb-category-scroller-widget .mdb-category-scroller-container {
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+/* Scroller Wrapper */
+.elementor-widget-mdb-category-scroller .mdb-category-scroller-wrapper,
+.mdb-category-scroller-widget .mdb-category-scroller-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: nowrap !important;
+  align-items: stretch !important;
+  transition: transform 0.3s ease !important;
+  gap: var(--mdb-category-gap) !important;
+  width: 100% !important;
+  padding: 0 var(--mdb-category-padding) !important;
+}
+
+/* Category Slide */
+.elementor-widget-mdb-category-scroller .mdb-category-slide,
+.mdb-category-scroller-widget .mdb-category-slide {
+  flex: 0 0 auto !important;
+  width: calc(33.333% - 20px) !important; /* Exactly 3 items per view with gap */
+  box-sizing: border-box !important;
+  /* JavaScript will override width dynamically */
+}
+
+/* Category Item */
+.elementor-widget-mdb-category-scroller .mdb-category-item,
+.mdb-category-scroller-widget .mdb-category-item {
+  background: var(--mdb-category-transparent) !important;
+  border-radius: var(--mdb-category-border-radius) !important;
+  overflow: hidden !important;
+  box-shadow: none !important;
+  transition: var(--mdb-category-transition) !important;
+  display: block !important;
+  margin: var(--mdb-category-item-margin) !important;
+}
+
+.elementor-widget-mdb-category-scroller .mdb-category-item:hover,
+.mdb-category-scroller-widget .mdb-category-item:hover {
+  /* Hover effects disabled - can be re-enabled by uncommenting below */
+  /* transform: translateY(-5px) !important; */
+  /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15) !important; */
+}
+
+/* Category Link */
+.elementor-widget-mdb-category-scroller .mdb-category-link,
+.mdb-category-scroller-widget .mdb-category-link {
+  display: block !important;
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+.elementor-widget-mdb-category-scroller .mdb-category-link:hover,
+.mdb-category-scroller-widget .mdb-category-link:hover {
+  text-decoration: none !important;
+  color: inherit !important;
+}
+
+/* Category Image */
+.elementor-widget-mdb-category-scroller .mdb-category-image,
+.mdb-category-scroller-widget .mdb-category-image {
+  width: 100% !important;
+  height: var(--mdb-category-image-height) !important;
+  overflow: hidden !important;
+  position: relative !important;
+}
+
+.elementor-widget-mdb-category-scroller .mdb-category-image img,
+.mdb-category-scroller-widget .mdb-category-image img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  transition: var(--mdb-category-transition) !important;
+}
+
+.elementor-widget-mdb-category-scroller .mdb-category-item:hover .mdb-category-image img,
+.mdb-category-scroller-widget .mdb-category-item:hover .mdb-category-image img {
+  transform: var(--mdb-category-image-scale) !important;
+}
+
+/* Category Content */
+.elementor-widget-mdb-category-scroller .mdb-category-content,
+.mdb-category-scroller-widget .mdb-category-content {
+  padding: var(--mdb-category-content-padding) !important;
+  text-align: center !important;
+}
+
+/* Category Name */
+.elementor-widget-mdb-category-scroller .mdb-category-name,
+.mdb-category-scroller-widget .mdb-category-name {
+  font-size: var(--mdb-category-font-size) !important;
+  text-align: left !important;
+  font-weight: normal !important;
+  color: var(--mdb-category-primary-color) !important;
+  margin: 0 !important;
+  line-height: var(--mdb-category-line-height) !important;
+}
+
+/* Empty State */
+.elementor-widget-mdb-category-scroller .mdb-category-scroller-empty,
+.mdb-category-scroller-widget .mdb-category-scroller-empty {
+  text-align: center !important;
+  padding: var(--mdb-category-empty-padding) !important;
+  color: var(--mdb-category-text-muted) !important;
+  font-style: italic !important;
+}
+
+/* Responsive Breakpoints */
+
+/* Desktop Large (keep 3 items) */
+@media (min-width: 1400px) {
+  .mdb-category-scroller-widget .mdb-category-slide {
+    width: calc(33.333% - 20px) !important;
+  }
+}
+
+/* Desktop (3 items - default) */
+@media (max-width: 1199px) {
+  .mdb-category-scroller-widget .mdb-category-slide {
+    width: calc(33.333% - 20px) !important;
+  }
+}
+
+/* Tablet (3 items) */
+@media (max-width: 991px) {
+  .mdb-category-scroller-widget .mdb-category-slide {
+    width: calc(33.333% - 20px) !important;
+  }
+
+  .mdb-category-scroller-wrapper {
+    gap: var(--mdb-category-gap-tablet) !important;
+    padding: 0 var(--mdb-category-padding-tablet) !important;
+  }
+
+  .mdb-category-image {
+    height: var(--mdb-category-image-height-tablet) !important;
+  }
+
+  .mdb-category-content {
+    padding: var(--mdb-category-content-padding-tablet) !important;
+  }
+
+  .mdb-category-name {
+    font-size: var(--mdb-category-font-size-tablet) !important;
+  }
+
+  .mdb-category-nav-btn {
+    width: var(--mdb-category-nav-size-tablet) !important;
+    height: var(--mdb-category-nav-size-tablet) !important;
+    font-size: var(--mdb-category-nav-font-size-tablet) !important;
+  }
+}
+
+/* Mobile (2 items) */
+@media (max-width: 767px) {
+  .mdb-category-scroller-widget .mdb-category-slide {
+    width: calc(50% - 15px) !important;
+  }
+
+  .mdb-category-scroller-wrapper {
+    gap: var(--mdb-category-gap-mobile) !important;
+    padding: 0 var(--mdb-category-padding-mobile) !important;
+  }
+
+  .mdb-category-scroller-header {
+    margin-bottom: var(--mdb-category-header-margin) !important;
+  }
+
+  .mdb-category-image {
+    height: var(--mdb-category-image-height-mobile) !important;
+  }
+
+  .mdb-category-content {
+    padding: var(--mdb-category-content-padding-mobile) !important;
+  }
+
+  .mdb-category-name {
+    font-size: var(--mdb-category-font-size-mobile) !important;
+  }
+
+  .mdb-category-nav-btn {
+    width: var(--mdb-category-nav-size-mobile) !important;
+    height: var(--mdb-category-nav-size-mobile) !important;
+    font-size: var(--mdb-category-nav-font-size-mobile) !important;
+  }
+
+  .mdb-category-scroller-navigation {
+    gap: var(--mdb-category-nav-gap-mobile) !important;
+  }
+}
+
+/* Small Mobile (1 item) */
+@media (max-width: 480px) {
+  .mdb-category-scroller-widget .mdb-category-slide {
+    width: 100% !important;
+  }
+
+  .mdb-category-scroller-wrapper {
+    gap: 0 !important;
+  }
+
+  .mdb-category-image {
+    height: var(--mdb-category-image-height-small-mobile) !important;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .mdb-category-scroller-wrapper,
+  .mdb-category-item,
+  .mdb-category-image img,
+  .mdb-category-nav-btn {
+    transition: none !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .mdb-category-scroller-navigation {
+    display: none !important;
+  }
+
+  .mdb-category-scroller-wrapper {
+    display: block !important;
+    transform: none !important;
+  }
+
+  .mdb-category-slide {
+    width: 50% !important;
+    float: left !important;
+    page-break-inside: avoid !important;
+  }
+}

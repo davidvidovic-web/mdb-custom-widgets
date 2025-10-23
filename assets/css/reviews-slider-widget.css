@@ -1,0 +1,311 @@
+/**
+ * MDB Reviews Slider Widget Styles
+ * 
+ * @package MDB Custom Widgets
+ * @since 1.0.0
+ * 
+ * High Specificity Styles - Override Elementor
+ */
+
+/* CSS Custom Properties (Variables) */
+:root {
+  /* Reviews Slider Colors */
+  --mdb-reviews-card-bg: #ffffff;
+  --mdb-reviews-title-color: #333333;
+  --mdb-reviews-text-color: #666666;
+  --mdb-reviews-person-color: #444d5f;
+  --mdb-reviews-person-title-color: #888888;
+  --mdb-reviews-rating-color: #ffa500;
+  --mdb-reviews-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  /* Reviews Layout */
+  --mdb-reviews-column-count: 2;
+  --mdb-reviews-grid-gap: 20px;
+  --mdb-reviews-card-padding: 25px;
+  --mdb-reviews-card-border-radius: 8px;
+  --mdb-reviews-header-margin: 15px;
+  --mdb-reviews-content-margin: 20px;
+  --mdb-reviews-footer-margin: 15px;
+
+  /* Reviews Typography */
+  --mdb-reviews-title-font-size: 1.25rem;
+  --mdb-reviews-title-line-height: 1.3;
+  --mdb-reviews-text-font-size: 1rem;
+  --mdb-reviews-text-line-height: 1.6;
+  --mdb-reviews-person-font-size: 0.95rem;
+  --mdb-reviews-person-title-font-size: 0.85rem;
+  --mdb-reviews-rating-font-size: 1.1rem;
+
+  /* Reviews Transitions */
+  --mdb-reviews-transition: all 0.3s ease;
+
+  /* Reviews Mobile Adjustments */
+  --mdb-reviews-mobile-padding: 20px;
+  --mdb-reviews-mobile-gap: 15px;
+  --mdb-reviews-mobile-title-font-size: 1.1rem;
+  --mdb-reviews-mobile-text-font-size: 0.9rem;
+}
+
+/* Main Container */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-slider-widget,
+.mdb-reviews-slider-widget.mdb-reviews-slider-widget {
+  position: relative !important;
+  width: 100% !important;
+}
+
+/* Slider Container */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-slider-container,
+.mdb-reviews-slider-widget .mdb-reviews-slider-container {
+  overflow: hidden !important;
+  position: relative !important;
+  padding: 30px;
+}
+
+/* Reviews Grid */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-grid,
+.mdb-reviews-slider-widget .mdb-reviews-grid {
+  position: relative !important;
+  width: 100% !important;
+  min-height: 1px !important;
+}
+
+/* Reviews Slide */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-slide,
+.mdb-reviews-slider-widget .mdb-reviews-slide {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 100% !important;
+  opacity: 0 !important;
+  transition: opacity 0.6s ease !important;
+  pointer-events: none !important;
+  column-count: var(--mdb-reviews-column-count) !important;
+  column-gap: var(--mdb-reviews-grid-gap) !important;
+  column-fill: balance !important;
+}
+
+.elementor-widget-mdb-reviews-slider .mdb-reviews-slide.active,
+.mdb-reviews-slider-widget .mdb-reviews-slide.active {
+  opacity: 1 !important;
+  position: relative !important;
+  pointer-events: auto !important;
+}
+
+/* Review Card base */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-slide .mdb-review-card,
+.mdb-reviews-slider-widget .mdb-reviews-slide .mdb-review-card {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: var(--mdb-reviews-grid-gap);
+  width: 100%;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+/* Review Card */
+.elementor-widget-mdb-reviews-slider .mdb-review-card,
+.mdb-reviews-slider-widget .mdb-review-card {
+  background: var(--mdb-reviews-card-bg) !important;
+  border-radius: var(--mdb-reviews-card-border-radius) !important;
+  padding: var(--mdb-reviews-card-padding) !important;
+  box-shadow: var(--mdb-reviews-shadow) !important;
+  transition: var(--mdb-reviews-transition) !important;
+  display: flex !important;
+  flex-direction: column !important;
+  height: auto !important;
+  position: relative !important;
+  break-inside: avoid !important;
+  page-break-inside: avoid !important;
+}
+
+.elementor-widget-mdb-reviews-slider .mdb-review-card:hover,
+.mdb-reviews-slider-widget .mdb-review-card:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Review Header */
+.elementor-widget-mdb-reviews-slider .mdb-review-header,
+.mdb-reviews-slider-widget .mdb-review-header {
+  display: flex !important;
+  justify-content: space-between !important;
+  align-items: flex-start !important;
+  margin-bottom: var(--mdb-reviews-header-margin) !important;
+  gap: 15px !important;
+}
+
+/* Review Title */
+.elementor-widget-mdb-reviews-slider .mdb-review-title,
+.mdb-reviews-slider-widget .mdb-review-title {
+  font-size: var(--mdb-reviews-title-font-size) !important;
+  line-height: var(--mdb-reviews-title-line-height) !important;
+  color: var(--mdb-reviews-title-color) !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+  flex: 1 !important;
+}
+
+/* Review Rating */
+.elementor-widget-mdb-reviews-slider .mdb-review-rating,
+.mdb-reviews-slider-widget .mdb-review-rating {
+  display: flex !important;
+  align-items: center !important;
+  gap: 2px !important;
+  flex-shrink: 0 !important;
+}
+
+.elementor-widget-mdb-reviews-slider .mdb-review-rating .star,
+.mdb-reviews-slider-widget .mdb-review-rating .star {
+  color: var(--mdb-reviews-rating-color) !important;
+  font-size: var(--mdb-reviews-rating-font-size) !important;
+  line-height: 1 !important;
+}
+
+.elementor-widget-mdb-reviews-slider .mdb-review-rating .star.empty,
+.mdb-reviews-slider-widget .mdb-review-rating .star.empty {
+  opacity: 0.3 !important;
+}
+
+.elementor-widget-mdb-reviews-slider .mdb-review-rating .star.half,
+.mdb-reviews-slider-widget .mdb-review-rating .star.half {
+  opacity: 0.7 !important;
+}
+
+/* Review Content */
+.elementor-widget-mdb-reviews-slider .mdb-review-content,
+.mdb-reviews-slider-widget .mdb-review-content {
+  flex: 0 0 auto !important;
+  margin-bottom: var(--mdb-reviews-content-margin) !important;
+}
+
+.elementor-widget-mdb-reviews-slider .mdb-review-text,
+.mdb-reviews-slider-widget .mdb-review-text {
+  font-size: var(--mdb-reviews-text-font-size) !important;
+  line-height: var(--mdb-reviews-text-line-height) !important;
+  color: var(--mdb-reviews-text-color) !important;
+  margin: 0 !important;
+}
+
+/* Review Footer */
+.elementor-widget-mdb-reviews-slider .mdb-review-footer,
+.mdb-reviews-slider-widget .mdb-review-footer {
+  margin-top: var(--mdb-reviews-footer-margin) !important;
+}
+
+.elementor-widget-mdb-reviews-slider .mdb-review-person,
+.mdb-reviews-slider-widget .mdb-review-person {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 3px !important;
+}
+
+.elementor-widget-mdb-reviews-slider .mdb-review-person-name,
+.mdb-reviews-slider-widget .mdb-review-person-name {
+  font-size: var(--mdb-reviews-person-font-size) !important;
+  color: var(--mdb-reviews-person-color) !important;
+  font-weight: 600 !important;
+  margin: 0 !important;
+}
+
+.elementor-widget-mdb-reviews-slider .mdb-review-person-title,
+.mdb-reviews-slider-widget .mdb-review-person-title {
+  font-size: var(--mdb-reviews-person-title-font-size) !important;
+  color: var(--mdb-reviews-person-title-color) !important;
+  font-style: italic !important;
+  margin: 0 !important;
+}
+
+/* Empty State */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-slider-empty,
+.mdb-reviews-slider-widget .mdb-reviews-slider-empty {
+  text-align: center !important;
+  padding: 40px 20px !important;
+  color: #666 !important;
+  font-style: italic !important;
+}
+
+/* Responsive Breakpoints */
+
+/* Tablet */
+@media (max-width: 991px) {
+  .mdb-reviews-slide {
+    gap: var(--mdb-reviews-mobile-gap) !important;
+  }
+
+  .mdb-review-card {
+    padding: var(--mdb-reviews-mobile-padding) !important;
+  }
+
+  .mdb-review-title {
+    font-size: var(--mdb-reviews-mobile-title-font-size) !important;
+  }
+
+  .mdb-review-text {
+    font-size: var(--mdb-reviews-mobile-text-font-size) !important;
+  }
+}
+
+/* Mobile */
+@media (max-width: 767px) {
+  .mdb-reviews-slider-widget {
+    --mdb-reviews-column-count: 1;
+    --mdb-reviews-grid-gap: var(--mdb-reviews-mobile-gap);
+  }
+
+  .mdb-review-header {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 10px !important;
+  }
+
+  .mdb-review-rating {
+    align-self: flex-start !important;
+  }
+}
+
+/* Small Mobile */
+@media (max-width: 480px) {
+  .mdb-review-card {
+    padding: 18px !important;
+  }
+
+  .mdb-review-title {
+    font-size: 1rem !important;
+  }
+
+  .mdb-review-text {
+    font-size: 0.85rem !important;
+  }
+
+  .mdb-review-person-name {
+    font-size: 0.9rem !important;
+  }
+
+  .mdb-review-person-title {
+    font-size: 0.8rem !important;
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .mdb-reviews-slide,
+  .mdb-review-card {
+    transition: none !important;
+  }
+}
+
+/* Print Styles */
+@media print {
+  .mdb-reviews-slide {
+    position: relative !important;
+    opacity: 1 !important;
+    page-break-inside: avoid !important;
+  }
+
+  .mdb-review-card {
+    box-shadow: none !important;
+    border: 1px solid #ddd !important;
+  }
+}

@@ -1,0 +1,417 @@
+/**
+ * MDB Reviews Navigation Widget Styles
+ * 
+ * @package MDB Custom Widgets
+ * @since 1.0.0
+ * 
+ * High Specificity Styles - Override Elementor & Ensure Visibility
+ */
+
+/* CSS Custom Properties (Variables) */
+:root {
+  /* Colors */
+  --mdb-reviews-nav-primary-color: #007cba;
+  --mdb-reviews-nav-hover-bg: #007cba;
+  --mdb-reviews-nav-hover-text: #ffffff;
+  --mdb-reviews-nav-disabled-color: #cccccc;
+  --mdb-reviews-nav-transparent: transparent;
+
+  /* Navigation Buttons */
+  --mdb-reviews-nav-size: 60px;
+  --mdb-reviews-nav-size-tablet: 48px;
+  --mdb-reviews-nav-size-mobile: 40px;
+  --mdb-reviews-nav-border: 2px;
+  --mdb-reviews-nav-gap: 10px;
+  --mdb-reviews-nav-gap-mobile: 8px;
+  --mdb-reviews-nav-font-size: 16px;
+  --mdb-reviews-nav-font-size-tablet: 14px;
+  --mdb-reviews-nav-font-size-mobile: 12px;
+
+  /* Transitions */
+  --mdb-reviews-nav-transition: all 0.3s ease;
+
+  /* Transforms */
+  --mdb-reviews-nav-hover-translate: translateY(-2px);
+
+  /* Shadows */
+  --mdb-reviews-nav-hover-shadow: 0 4px 8px rgba(0, 124, 186, 0.15);
+
+  /* Opacity */
+  --mdb-reviews-nav-disabled-opacity: 0.5;
+
+  /* Border Radius */
+  --mdb-reviews-nav-border-radius: 50%;
+
+  /* Focus Outline */
+  --mdb-reviews-nav-focus-outline: 2px solid var(--mdb-reviews-nav-primary-color);
+  --mdb-reviews-nav-focus-offset: 2px;
+}
+
+/* Main Container - Ensure Proper Positioning and Visibility */
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-navigation-widget,
+.mdb-reviews-navigation-widget.mdb-reviews-navigation-widget {
+  position: relative !important;
+  width: 100% !important;
+  overflow: visible !important;
+  z-index: 10 !important;
+  display: block !important;
+  min-height: 60px !important;
+}
+
+/* Force Elementor Widget Container to be Visible */
+.elementor-widget-mdb-reviews-navigation,
+.elementor-widget-mdb-reviews-navigation > .elementor-widget-container {
+  overflow: visible !important;
+  position: relative !important;
+  z-index: 10 !important;
+}
+
+/* Navigation Buttons Container */
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-navigation,
+.mdb-reviews-navigation-widget .mdb-reviews-navigation {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: var(--mdb-reviews-nav-gap) !important;
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 10 !important;
+  min-height: 60px !important;
+  width: auto !important;
+}
+
+/* Navigation Buttons - Base Styles (Elementor-friendly) */
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn,
+.mdb-reviews-navigation-widget .mdb-reviews-nav-btn,
+.elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn,
+.mdb-reviews-navigation-widget .mdb-category-nav-btn {
+  /* Display & Layout - CRITICAL - Keep !important */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  
+  /* Sizing - DEFAULT VALUES (Elementor can override) */
+  width: var(--mdb-reviews-nav-size);
+  height: var(--mdb-reviews-nav-size);
+  min-width: var(--mdb-reviews-nav-size);
+  min-height: var(--mdb-reviews-nav-size);
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  
+  /* Appearance - DEFAULT VALUES (Elementor can override) */
+  background-color: var(--mdb-reviews-nav-transparent);
+  border: var(--mdb-reviews-nav-border) solid var(--mdb-reviews-nav-primary-color);
+  border-radius: var(--mdb-reviews-nav-border-radius);
+  color: var(--mdb-reviews-nav-primary-color);
+  
+  /* Typography - DEFAULT VALUES (Elementor can override) */
+  font-size: var(--mdb-reviews-nav-font-size);
+  line-height: 1 !important;
+  font-style: normal !important;
+  font-weight: normal;
+  text-decoration: none !important;
+  
+  /* Behavior - Keep !important */
+  cursor: pointer !important;
+  user-select: none !important;
+  transition: var(--mdb-reviews-nav-transition);
+  pointer-events: auto !important;
+  
+  /* Visibility & Stacking - CRITICAL - Keep !important */
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 10 !important;
+  overflow: visible !important;
+  clip: auto !important;
+  clip-path: none !important;
+  
+  /* Reset Elementor Defaults - Keep !important */
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+  
+  /* Filter - Keep !important for visibility */
+  filter: none !important;
+}
+
+/* Icon inside Button */
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn i,
+.mdb-reviews-navigation-widget .mdb-reviews-nav-btn i,
+.elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn i,
+.mdb-reviews-navigation-widget .mdb-category-nav-btn i {
+  display: inline-block !important;
+  line-height: 1 !important;
+  pointer-events: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-size: inherit !important;
+}
+
+/* Elementor Icon Specificity (Primary - matches category scroller) */
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn .eicon,
+.mdb-reviews-navigation-widget .mdb-reviews-nav-btn .eicon,
+.elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn .eicon,
+.mdb-reviews-navigation-widget .mdb-category-nav-btn .eicon,
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn [class^="eicon-"],
+.mdb-reviews-navigation-widget .mdb-reviews-nav-btn [class^="eicon-"],
+.elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn [class^="eicon-"],
+.mdb-reviews-navigation-widget .mdb-category-nav-btn [class^="eicon-"] {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-family: eicons !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* FontAwesome Icon Specificity (Fallback support) */
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn .fas,
+.mdb-reviews-navigation-widget .mdb-reviews-nav-btn .fas,
+.elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn .fas,
+.mdb-reviews-navigation-widget .mdb-category-nav-btn .fas {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Hover State - DEFAULT VALUES (Elementor can override) */
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn:hover,
+.mdb-reviews-navigation-widget .mdb-reviews-nav-btn:hover,
+.elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn:hover,
+.mdb-reviews-navigation-widget .mdb-category-nav-btn:hover {
+  background-color: var(--mdb-reviews-nav-hover-bg);
+  color: var(--mdb-reviews-nav-hover-text);
+  border-color: var(--mdb-reviews-nav-hover-bg);
+  transform: var(--mdb-reviews-nav-hover-translate);
+  box-shadow: var(--mdb-reviews-nav-hover-shadow);
+}
+
+/* Focus State for Accessibility */
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn:focus,
+.mdb-reviews-navigation-widget .mdb-reviews-nav-btn:focus,
+.elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn:focus,
+.mdb-reviews-navigation-widget .mdb-category-nav-btn:focus {
+  outline: var(--mdb-reviews-nav-focus-outline) !important;
+  outline-offset: var(--mdb-reviews-nav-focus-offset) !important;
+}
+
+/* Focus Visible (Modern Browsers) */
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn:focus-visible,
+.mdb-reviews-navigation-widget .mdb-reviews-nav-btn:focus-visible,
+.elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn:focus-visible,
+.mdb-reviews-navigation-widget .mdb-category-nav-btn:focus-visible {
+  outline: var(--mdb-reviews-nav-focus-outline) !important;
+  outline-offset: var(--mdb-reviews-nav-focus-offset) !important;
+}
+
+/* Disabled State - DEFAULT VALUES (Elementor can override) */
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn:disabled,
+.mdb-reviews-navigation-widget .mdb-reviews-nav-btn:disabled,
+.elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn:disabled,
+.mdb-reviews-navigation-widget .mdb-category-nav-btn:disabled {
+  opacity: var(--mdb-reviews-nav-disabled-opacity);
+  cursor: not-allowed !important;
+  color: var(--mdb-reviews-nav-disabled-color);
+  border-color: var(--mdb-reviews-nav-disabled-color);
+}
+
+/* Prevent Hover Effects on Disabled Buttons */
+.elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn:disabled:hover,
+.mdb-reviews-navigation-widget .mdb-reviews-nav-btn:disabled:hover,
+.elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn:disabled:hover,
+.mdb-reviews-navigation-widget .mdb-category-nav-btn:disabled:hover {
+  transform: none !important;
+  box-shadow: none !important;
+  background-color: var(--mdb-reviews-nav-transparent);
+}
+
+/* Tablet Responsive Styles - FALLBACK (Elementor responsive controls override) */
+@media (max-width: 1024px) {
+  .elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn,
+  .mdb-reviews-navigation-widget .mdb-reviews-nav-btn,
+  .elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn,
+  .mdb-reviews-navigation-widget .mdb-category-nav-btn {
+    width: var(--mdb-reviews-nav-size-tablet);
+    height: var(--mdb-reviews-nav-size-tablet);
+    min-width: var(--mdb-reviews-nav-size-tablet);
+    min-height: var(--mdb-reviews-nav-size-tablet);
+    font-size: var(--mdb-reviews-nav-font-size-tablet);
+  }
+
+  .elementor-widget-mdb-reviews-navigation .mdb-reviews-navigation,
+  .mdb-reviews-navigation-widget .mdb-reviews-navigation {
+    gap: var(--mdb-reviews-nav-gap-mobile);
+  }
+}
+
+/* Mobile Responsive Styles - FALLBACK (Elementor responsive controls override) */
+@media (max-width: 767px) {
+  .elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn,
+  .mdb-reviews-navigation-widget .mdb-reviews-nav-btn,
+  .elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn,
+  .mdb-reviews-navigation-widget .mdb-category-nav-btn {
+    width: var(--mdb-reviews-nav-size-mobile);
+    height: var(--mdb-reviews-nav-size-mobile);
+    min-width: var(--mdb-reviews-nav-size-mobile);
+    min-height: var(--mdb-reviews-nav-size-mobile);
+    font-size: var(--mdb-reviews-nav-font-size-mobile);
+  }
+
+  .elementor-widget-mdb-reviews-navigation .mdb-reviews-navigation,
+  .mdb-reviews-navigation-widget .mdb-reviews-navigation {
+    gap: var(--mdb-reviews-nav-gap-mobile);
+  }
+}
+
+/* Override Any Elementor Container Overflow Issues */
+.elementor-widget-mdb-reviews-navigation,
+.elementor-widget-mdb-reviews-navigation .elementor-widget-container {
+  overflow: visible !important;
+}
+
+/* Ensure Parent Sections Don't Hide Overflow */
+.elementor-section:has(.mdb-reviews-navigation-widget),
+.elementor-column:has(.mdb-reviews-navigation-widget),
+.elementor-container:has(.mdb-reviews-navigation-widget) {
+  overflow: visible !important;
+}
+
+/* Additional Frontend-Specific Overrides - VISIBILITY ONLY */
+body:not(.elementor-editor-active) .elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn,
+body:not(.elementor-editor-active) .mdb-reviews-navigation-widget .mdb-reviews-nav-btn,
+body:not(.elementor-editor-active) .elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn,
+body:not(.elementor-editor-active) .mdb-reviews-navigation-widget .mdb-category-nav-btn {
+  /* Only force critical visibility properties */
+  display: flex !important;
+  visibility: visible !important;
+  pointer-events: auto !important;
+}
+
+/* Force visibility on frontend */
+body:not(.elementor-editor-active) .elementor-widget-mdb-reviews-navigation .mdb-reviews-navigation,
+body:not(.elementor-editor-active) .mdb-reviews-navigation-widget .mdb-reviews-navigation {
+  display: flex !important;
+  visibility: visible !important;
+}
+
+/* Ensure container is visible on frontend */
+body:not(.elementor-editor-active) .elementor-widget-mdb-reviews-navigation .mdb-reviews-navigation-widget,
+body:not(.elementor-editor-active) .mdb-reviews-navigation-widget.mdb-reviews-navigation-widget {
+  display: block !important;
+  visibility: visible !important;
+}
+
+/* RTL Support */
+[dir="rtl"] .elementor-widget-mdb-reviews-navigation .mdb-reviews-navigation,
+[dir="rtl"] .mdb-reviews-navigation-widget .mdb-reviews-navigation {
+  flex-direction: row-reverse !important;
+}
+
+/* Accessibility - High Contrast Mode */
+@media (prefers-contrast: high) {
+  .elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn,
+  .mdb-reviews-navigation-widget .mdb-reviews-nav-btn,
+  .elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn,
+  .mdb-reviews-navigation-widget .mdb-category-nav-btn {
+    border-width: 3px !important;
+  }
+}
+
+/* Accessibility - Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+  .elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn,
+  .mdb-reviews-navigation-widget .mdb-reviews-nav-btn,
+  .elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn,
+  .mdb-reviews-navigation-widget .mdb-category-nav-btn {
+    transition: none !important;
+  }
+  
+  .elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn:hover,
+  .mdb-reviews-navigation-widget .mdb-reviews-nav-btn:hover,
+  .elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn:hover,
+  .mdb-reviews-navigation-widget .mdb-category-nav-btn:hover {
+    transform: none !important;
+  }
+}
+
+/* Print Styles - Hide Navigation in Print */
+@media print {
+  .elementor-widget-mdb-reviews-navigation .mdb-reviews-navigation-widget,
+  .mdb-reviews-navigation-widget.mdb-reviews-navigation-widget {
+    display: none !important;
+  }
+}
+
+/* ============================================ */
+/* AGGRESSIVE FRONTEND FIXES */
+/* These rules ONLY enforce visibility - NOT styles */
+/* ============================================ */
+
+/* Ensure buttons are always visible on frontend */
+body .elementor-widget-mdb-reviews-navigation .mdb-reviews-nav-btn,
+body .mdb-reviews-navigation-widget .mdb-reviews-nav-btn,
+body .elementor-widget-mdb-reviews-navigation .mdb-category-nav-btn,
+body .mdb-reviews-navigation-widget .mdb-category-nav-btn,
+body .mdb-reviews-prev,
+body .mdb-reviews-next {
+  /* Only force display and visibility - NOT colors/sizes */
+  display: flex !important;
+  visibility: visible !important;
+}
+
+/* Nuclear option - ensure nothing hides the buttons */
+.mdb-reviews-navigation-widget *,
+.elementor-widget-mdb-reviews-navigation * {
+  visibility: inherit !important;
+}
+
+.mdb-reviews-navigation-widget,
+.mdb-reviews-navigation,
+.mdb-reviews-nav-btn,
+.mdb-category-nav-btn {
+  visibility: visible !important;
+  display: inherit !important;
+}
+
+/* Prevent any parent from hiding content */
+.elementor-widget-mdb-reviews-navigation {
+  contain: none !important;
+  isolation: auto !important;
+}
+
+/* Ensure proper stacking context */
+.elementor-widget-mdb-reviews-navigation,
+.elementor-widget-mdb-reviews-navigation .elementor-widget-container,
+.mdb-reviews-navigation-widget {
+  isolation: auto !important;
+  mix-blend-mode: normal !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* ============================================ */
+/* DEBUG MODE - Uncomment to visualize issues */
+/* ============================================ */
+/*
+.mdb-reviews-navigation-widget {
+  outline: 3px solid red !important;
+  background: rgba(255, 0, 0, 0.1) !important;
+}
+
+.mdb-reviews-navigation {
+  outline: 3px solid blue !important;
+  background: rgba(0, 0, 255, 0.1) !important;
+}
+
+.mdb-reviews-nav-btn,
+.mdb-category-nav-btn {
+  outline: 3px solid green !important;
+  background: rgba(0, 255, 0, 0.2) !important;
+}
+*/

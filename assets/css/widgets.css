@@ -1,0 +1,114 @@
+/**
+ * MDB Custom Widgets Styles
+ * 
+ * @package MDB Custom Widgets
+ * @since 1.0.0
+ */
+
+/* Widget Category Styles */
+.elementor-panel-categories .elementor-panel-category-title[data-tab="mdb-widgets"] {
+    background-color: #6ec1e4;
+    color: #fff;
+}
+
+.elementor-panel-categories .elementor-panel-category-title[data-tab="mdb-widgets"]:hover {
+    background-color: #5ba0c2;
+}
+
+/* Common Widget Styles */
+.mdb-widget {
+    position: relative;
+}
+
+.mdb-widget * {
+    box-sizing: border-box;
+}
+
+.mdb-widget .mdb-loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    font-size: 14px;
+    color: #999;
+}
+
+.mdb-widget .mdb-error {
+    padding: 20px;
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+/* Responsive Helper Classes */
+@media (max-width: 767px) {
+    .mdb-hide-mobile {
+        display: none !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1024px) {
+    .mdb-hide-tablet {
+        display: none !important;
+    }
+}
+
+@media (min-width: 1025px) {
+    .mdb-hide-desktop {
+        display: none !important;
+    }
+}
+
+/* Utility Classes */
+.mdb-text-left {
+    text-align: left;
+}
+
+.mdb-text-center {
+    text-align: center;
+}
+
+.mdb-text-right {
+    text-align: right;
+}
+
+.mdb-text-justify {
+    text-align: justify;
+}
+
+.mdb-clearfix::after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+/* Animation Classes */
+.mdb-fade-in {
+    animation: mdbFadeIn 0.5s ease-in-out;
+}
+
+.mdb-slide-up {
+    animation: mdbSlideUp 0.5s ease-in-out;
+}
+
+@keyframes mdbFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes mdbSlideUp {
+    from {
+        transform: translateY(30px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
