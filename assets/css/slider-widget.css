@@ -31,9 +31,9 @@
   --mdb-slider-images-width: 60%;
 
   /* Sizes - Typography */
-  --mdb-slider-title-size: 4rem;
-  --mdb-slider-text-size: 1.1rem;
-  --mdb-slider-button-size: 1rem;
+  --mdb-slider-title-size: 3em;
+  --mdb-slider-text-size: 1.1em;
+  --mdb-slider-button-size: 1em;
   --mdb-slider-counter-size: 14px;
   --mdb-slider-default-title-size: 24px;
   --mdb-slider-default-text-size: 14px;
@@ -79,18 +79,18 @@
   --mdb-slider-tablet-content-width: 40%;
   --mdb-slider-tablet-images-width: 60%;
   --mdb-slider-tablet-image-width: 120px;
-  --mdb-slider-tablet-title-size: 2.2rem;
-  --mdb-slider-tablet-text-size: 1rem;
+  --mdb-slider-tablet-title-size: 2.2em;
+  --mdb-slider-tablet-text-size: 1em;
   --mdb-slider-tablet-content-padding: 25px;
   --mdb-slider-tablet-image-1-height: 160px;
   --mdb-slider-tablet-image-2-height: 208px;
   --mdb-slider-tablet-image-3-height: 128px;
 
   /* Responsive Sizes - Mobile */
-  --mdb-slider-mobile-title-size: 1.8rem;
-  --mdb-slider-mobile-text-size: 0.95rem;
+  --mdb-slider-mobile-title-size: 1.8em;
+  --mdb-slider-mobile-text-size: 0.95em;
   --mdb-slider-mobile-content-padding: 20px;
-  --mdb-slider-mobile-min-height: 400px;
+  --mdb-slider-mobile-min-height: 650px;
   --mdb-slider-mobile-min-button-height: 200px;
   --mdb-slider-mobile-image-width: 100px;
   --mdb-slider-mobile-image-1-height: 120px;
@@ -537,38 +537,66 @@
     flex-direction: column;
     height: auto;
     min-height: var(--mdb-slider-mobile-min-height);
+    overflow: visible;
+    padding-bottom: 30px; /* Add extra padding to container bottom */
   }
 
   .mdb-slider-content {
-    width: 100%;
+    display: contents;
+  }
+
+  .mdb-slider-content-inner {
     order: 1;
-    min-height: var(--mdb-slider-mobile-min-button-height);
+    width: 100%;
+    min-height: auto;
+    overflow: visible;
+  }
+
+  .mdb-slide-content {
+      position: relative;
+      height: auto;
+      opacity: 1;
+      display: none;
+  }
+
+  .mdb-slide-content.active {
+      display: flex;
   }
 
   .mdb-slider-images {
     width: 100%;
     order: 2;
+    min-height: 300px;
   }
 
   /* Mobile text and button styles */
   .mdb-slide-title {
-    font-size: var(--mdb-slider-mobile-title-size);
+    font-size: 2em !important; /* Reduced from var(--mdb-slider-mobile-title-size) */
     margin-bottom: var(--mdb-slider-default-margin);
   }
 
   .mdb-slide-text {
-    font-size: var(--mdb-slider-mobile-text-size);
+    font-size: 0.9em; /* Reduced from var(--mdb-slider-mobile-text-size) */
     margin-bottom: var(--mdb-slider-content-padding);
   }
 
   .mdb-slide-content-wrapper {
     padding: var(--mdb-slider-mobile-content-padding);
+    align-items: center;
+    text-align: center;
+  }
+  
+  .mdb-slide-button-wrapper {
+     flex-direction: column;
+     width: 100%;
+     justify-content: center;
   }
 
   .mdb-slide-button {
-    width: 100%;
+    width: auto; /* Changed from 100% to auto */
+    display: inline-block;
     text-align: center;
-    min-height: var(--mdb-slider-mobile-min-button-height);
+    min-height: auto; /* Removed the large min-height */
   }
 
   .mdb-slider-images-container {
@@ -597,36 +625,54 @@
   }
 
   .mdb-slider-controls {
-    flex-direction: column;
-    align-items: flex-start;
+    order: 3;
+    width: 100%;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
     gap: var(--mdb-slider-mobile-controls-gap);
+    margin-top: 30px; /* Increased from 15px */
+    padding-bottom: 20px;
+    box-sizing: border-box; /* Fixed overflow issue */
   }
 
   .mdb-slide-counter {
     margin-left: 0;
-    align-self: flex-end;
+    align-self: auto;
   }
 }
 
 /* Small Mobile */
 @media (max-width: 480px) {
+  .mdb-slider-images {
+    min-height: 250px;
+    overflow: visible;
+  }
+
   .mdb-slider-images-container {
-    flex-direction: column;
-    gap: var(--mdb-slider-default-margin);
+    flex-direction: row;
+    gap: 5px;
   }
 
   .mdb-slider-image {
-    width: var(--mdb-slider-small-mobile-image-width);
+    width: 28vw;
+    max-width: 100px;
   }
 
-  .mdb-image-1,
-  .mdb-image-2,
+  .mdb-image-1 {
+    height: 90px;
+  }
+
+  .mdb-image-2 {
+    height: 115px;
+  }
+
   .mdb-image-3 {
-    height: var(--mdb-slider-small-mobile-image-height);
+    height: 70px;
   }
 
   .mdb-slide-content {
-    padding: var(--mdb-slider-small-mobile-content-padding);
+    padding: 0;
   }
 
   .mdb-slider-controls {

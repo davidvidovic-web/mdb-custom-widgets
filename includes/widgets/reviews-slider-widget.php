@@ -277,6 +277,88 @@ class MDB_Reviews_Slider_Widget extends MDB_Widget_Base {
 
         $this->end_controls_section();
 
+        // Content Tab - Navigation
+        $this->start_controls_section(
+            'navigation_section',
+            [
+                'label' => esc_html__( 'Navigation', 'mdb-custom-widgets' ),
+                'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
+            ]
+        );
+
+        $this->add_control(
+            'show_navigation',
+            [
+                'label' => esc_html__( 'Show Navigation', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Show', 'mdb-custom-widgets' ),
+                'label_off' => esc_html__( 'Hide', 'mdb-custom-widgets' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+            ]
+        );
+
+        $this->add_control(
+            'show_previous',
+            [
+                'label' => esc_html__( 'Show Previous Button', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Show', 'mdb-custom-widgets' ),
+                'label_off' => esc_html__( 'Hide', 'mdb-custom-widgets' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+                'condition' => [
+                    'show_navigation' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'show_next',
+            [
+                'label' => esc_html__( 'Show Next Button', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::SWITCHER,
+                'label_on' => esc_html__( 'Show', 'mdb-custom-widgets' ),
+                'label_off' => esc_html__( 'Hide', 'mdb-custom-widgets' ),
+                'return_value' => 'yes',
+                'default' => 'yes',
+                'condition' => [
+                    'show_navigation' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'button_alignment',
+            [
+                'label' => esc_html__( 'Button Alignment', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::CHOOSE,
+                'options' => [
+                    'left' => [
+                        'title' => esc_html__( 'Left', 'mdb-custom-widgets' ),
+                        'icon' => 'eicon-text-align-left',
+                    ],
+                    'center' => [
+                        'title' => esc_html__( 'Center', 'mdb-custom-widgets' ),
+                        'icon' => 'eicon-text-align-center',
+                    ],
+                    'right' => [
+                        'title' => esc_html__( 'Right', 'mdb-custom-widgets' ),
+                        'icon' => 'eicon-text-align-right',
+                    ],
+                ],
+                'default' => 'right',
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-navigation' => 'justify-content: {{VALUE}};',
+                ],
+                'condition' => [
+                    'show_navigation' => 'yes',
+                ],
+            ]
+        );
+
+        $this->end_controls_section();
+
         // Style Tab - Cards
         $this->start_controls_section(
             'cards_style_section',
@@ -573,6 +655,295 @@ class MDB_Reviews_Slider_Widget extends MDB_Widget_Base {
         );
 
         $this->end_controls_section();
+
+        // Style Tab - Navigation Buttons
+        $this->start_controls_section(
+            'navigation_buttons_style_section',
+            [
+                'label' => esc_html__( 'Navigation Buttons', 'mdb-custom-widgets' ),
+                'tab' => \Elementor\Controls_Manager::TAB_STYLE,
+                'condition' => [
+                    'show_navigation' => 'yes',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'nav_button_size',
+            [
+                'label' => esc_html__( 'Button Size', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 30,
+                        'max' => 80,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 60,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-nav-btn' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'nav_button_border_radius',
+            [
+                'label' => esc_html__( 'Border Radius', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%' ],
+                'default' => [
+                    'top' => '50',
+                    'right' => '50',
+                    'bottom' => '50',
+                    'left' => '50',
+                    'unit' => '%',
+                    'isLinked' => true,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-nav-btn' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'nav_button_font_size',
+            [
+                'label' => esc_html__( 'Icon Size', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 12,
+                        'max' => 24,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 16,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-nav-btn' => 'font-size: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        $this->add_responsive_control(
+            'nav_button_gap',
+            [
+                'label' => esc_html__( 'Gap Between Buttons', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'size_units' => [ 'px' ],
+                'range' => [
+                    'px' => [
+                        'min' => 5,
+                        'max' => 30,
+                        'step' => 1,
+                    ],
+                ],
+                'default' => [
+                    'unit' => 'px',
+                    'size' => 10,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-navigation' => 'gap: {{SIZE}}{{UNIT}};',
+                ],
+            ]
+        );
+
+        // Button Colors
+        $this->start_controls_tabs( 'nav_button_colors_tabs' );
+
+        // Normal State
+        $this->start_controls_tab(
+            'nav_button_normal_tab',
+            [
+                'label' => esc_html__( 'Normal', 'mdb-custom-widgets' ),
+            ]
+        );
+
+        $this->add_control(
+            'nav_button_background_color',
+            [
+                'label' => esc_html__( 'Background Color', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'transparent',
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-nav-btn' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'nav_button_text_color',
+            [
+                'label' => esc_html__( 'Icon Color', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#007cba',
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-nav-btn' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_group_control(
+            \Elementor\Group_Control_Border::get_type(),
+            [
+                'name' => 'nav_button_border',
+                'selector' => '{{WRAPPER}} .mdb-reviews-nav-btn',
+                'fields_options' => [
+                    'border' => [
+                        'default' => 'solid',
+                    ],
+                    'width' => [
+                        'default' => [
+                            'top' => '2',
+                            'right' => '2',
+                            'bottom' => '2',
+                            'left' => '2',
+                            'isLinked' => true,
+                        ],
+                    ],
+                    'color' => [
+                        'default' => '#007cba',
+                    ],
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        // Hover State
+        $this->start_controls_tab(
+            'nav_button_hover_tab',
+            [
+                'label' => esc_html__( 'Hover', 'mdb-custom-widgets' ),
+            ]
+        );
+
+        $this->add_control(
+            'nav_button_background_color_hover',
+            [
+                'label' => esc_html__( 'Background Color', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#007cba',
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-nav-btn:hover' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'nav_button_text_color_hover',
+            [
+                'label' => esc_html__( 'Icon Color', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#ffffff',
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-nav-btn:hover' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'nav_button_border_color_hover',
+            [
+                'label' => esc_html__( 'Border Color', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#007cba',
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-nav-btn:hover' => 'border-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        // Disabled State
+        $this->start_controls_tab(
+            'nav_button_disabled_tab',
+            [
+                'label' => esc_html__( 'Disabled', 'mdb-custom-widgets' ),
+            ]
+        );
+
+        $this->add_control(
+            'nav_button_background_color_disabled',
+            [
+                'label' => esc_html__( 'Background Color', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => 'transparent',
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-nav-btn:disabled' => 'background-color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'nav_button_text_color_disabled',
+            [
+                'label' => esc_html__( 'Icon Color', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::COLOR,
+                'default' => '#cccccc',
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-nav-btn:disabled' => 'color: {{VALUE}};',
+                ],
+            ]
+        );
+
+        $this->add_control(
+            'nav_button_opacity_disabled',
+            [
+                'label' => esc_html__( 'Opacity', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::SLIDER,
+                'range' => [
+                    'px' => [
+                        'min' => 0.1,
+                        'max' => 1,
+                        'step' => 0.1,
+                    ],
+                ],
+                'default' => [
+                    'size' => 0.5,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-nav-btn:disabled' => 'opacity: {{SIZE}};',
+                ],
+            ]
+        );
+
+        $this->end_controls_tab();
+
+        $this->end_controls_tabs();
+
+        $this->add_responsive_control(
+            'navigation_margin',
+            [
+                'label' => esc_html__( 'Navigation Margin', 'mdb-custom-widgets' ),
+                'type' => \Elementor\Controls_Manager::DIMENSIONS,
+                'size_units' => [ 'px', '%', 'em' ],
+                'default' => [
+                    'top' => '20',
+                    'right' => '0',
+                    'bottom' => '0',
+                    'left' => '0',
+                    'unit' => 'px',
+                    'isLinked' => false,
+                ],
+                'selectors' => [
+                    '{{WRAPPER}} .mdb-reviews-navigation' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+                ],
+                'separator' => 'before',
+            ]
+        );
+
+        $this->end_controls_section();
     }
 
     /**
@@ -636,6 +1007,22 @@ class MDB_Reviews_Slider_Widget extends MDB_Widget_Base {
                     <?php endforeach; ?>
                 </div>
             </div>
+            
+            <?php if ( $settings['show_navigation'] === 'yes' ) : ?>
+                <div class="mdb-reviews-navigation">
+                    <?php if ( $settings['show_previous'] === 'yes' ) : ?>
+                        <button type="button" class="mdb-reviews-nav-btn mdb-reviews-prev" aria-label="<?php echo esc_attr__( 'Previous Reviews', 'mdb-custom-widgets' ); ?>" aria-disabled="false">
+                            <i class="eicon-chevron-left" aria-hidden="true"></i>
+                        </button>
+                    <?php endif; ?>
+                    
+                    <?php if ( $settings['show_next'] === 'yes' ) : ?>
+                        <button type="button" class="mdb-reviews-nav-btn mdb-reviews-next" aria-label="<?php echo esc_attr__( 'Next Reviews', 'mdb-custom-widgets' ); ?>" aria-disabled="false">
+                            <i class="eicon-chevron-right" aria-hidden="true"></i>
+                        </button>
+                    <?php endif; ?>
+                </div>
+            <?php endif; ?>
         </div>
         <?php
     }
@@ -765,6 +1152,22 @@ class MDB_Reviews_Slider_Widget extends MDB_Widget_Base {
                     <# }); #>
                 </div>
             </div>
+            
+            <# if ( settings.show_navigation === 'yes' ) { #>
+                <div class="mdb-reviews-navigation">
+                    <# if ( settings.show_previous === 'yes' ) { #>
+                        <button type="button" class="mdb-reviews-nav-btn mdb-reviews-prev" aria-label="<?php echo esc_attr__( 'Previous Reviews', 'mdb-custom-widgets' ); ?>" aria-disabled="false">
+                            <i class="eicon-chevron-left" aria-hidden="true"></i>
+                        </button>
+                    <# } #>
+                    
+                    <# if ( settings.show_next === 'yes' ) { #>
+                        <button type="button" class="mdb-reviews-nav-btn mdb-reviews-next" aria-label="<?php echo esc_attr__( 'Next Reviews', 'mdb-custom-widgets' ); ?>" aria-disabled="false">
+                            <i class="eicon-chevron-right" aria-hidden="true"></i>
+                        </button>
+                    <# } #>
+                </div>
+            <# } #>
         </div>
         <?php
     }

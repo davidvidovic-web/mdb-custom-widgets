@@ -273,6 +273,11 @@ final class MDB_Custom_Widgets {
         require_once( __DIR__ . '/includes/widgets/reviews-slider-widget.php' );
         require_once( __DIR__ . '/includes/widgets/reviews-navigation-widget.php' );
         require_once( __DIR__ . '/includes/widgets/category-scroller-widget.php' );
+        require_once( __DIR__ . '/includes/widgets/instant-pricing-widget.php' );
+        require_once( __DIR__ . '/includes/widgets/simple-reviews-widget.php' );
+        require_once( __DIR__ . '/includes/widgets/comparison-table-widget.php' );
+        require_once( __DIR__ . '/includes/widgets/unique-features-slider-widget.php' );
+        require_once( __DIR__ . '/includes/widgets/measurement-guide-widget.php' );
 
         // Register widgets with error handling
         try {
@@ -280,6 +285,11 @@ final class MDB_Custom_Widgets {
             $widgets_manager->register( new MDB_Reviews_Slider_Widget() );
             $widgets_manager->register( new MDB_Reviews_Navigation_Widget() );
             $widgets_manager->register( new MDB_Category_Scroller_Widget() );
+            $widgets_manager->register( new MDB_Instant_Pricing_Widget() );
+            $widgets_manager->register( new MDB_Simple_Reviews_Widget() );
+            $widgets_manager->register( new MDB_Comparison_Table_Widget() );
+            $widgets_manager->register( new MDB_Unique_Features_Slider_Widget() );
+            $widgets_manager->register( new MDB_Measurement_Guide_Widget() );
             
             // Debug: Log successful registration
             if ( WP_DEBUG ) {
@@ -329,6 +339,11 @@ final class MDB_Custom_Widgets {
         wp_register_style( 'mdb-reviews-slider-widget', plugins_url( 'assets/css/reviews-slider-widget.css', __FILE__ ), [], self::VERSION );
         wp_register_style( 'mdb-reviews-navigation-widget', plugins_url( 'assets/css/reviews-navigation-widget.css', __FILE__ ), [], self::VERSION );
         wp_register_style( 'mdb-category-scroller-widget', plugins_url( 'assets/css/category-scroller-widget.css', __FILE__ ), [], self::VERSION );
+        wp_register_style( 'mdb-instant-pricing-widget', plugins_url( 'assets/css/instant-pricing-widget.css', __FILE__ ), [], self::VERSION );
+        wp_register_style( 'mdb-simple-reviews-widget', plugins_url( 'assets/css/simple-reviews-widget.css', __FILE__ ), [], self::VERSION );
+        wp_register_style( 'mdb-comparison-table-widget', plugins_url( 'assets/css/comparison-table-widget.css', __FILE__ ), [], self::VERSION );
+        wp_register_style( 'mdb-unique-features-slider-widget', plugins_url( 'assets/css/unique-features-slider-widget.css', __FILE__ ), [], self::VERSION );
+        wp_register_style( 'mdb-measurement-guide-widget', plugins_url( 'assets/css/measurement-guide-widget.css', __FILE__ ), [], self::VERSION );
 
         // Enqueue main widget styles on all pages with Elementor content
         wp_enqueue_style( 'mdb-custom-widgets' );
@@ -360,6 +375,9 @@ final class MDB_Custom_Widgets {
         wp_register_script( 'mdb-reviews-slider-widget', plugins_url( 'assets/js/reviews-slider-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets' ], self::VERSION );
         wp_register_script( 'mdb-reviews-navigation-widget', plugins_url( 'assets/js/reviews-navigation-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets' ], self::VERSION );
         wp_register_script( 'mdb-category-scroller-widget', plugins_url( 'assets/js/category-scroller-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets' ], self::VERSION );
+        wp_register_script( 'mdb-simple-reviews-widget', plugins_url( 'assets/js/simple-reviews-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets', 'swiper' ], self::VERSION );
+        wp_register_script( 'mdb-instant-pricing-widget', plugins_url( 'assets/js/instant-pricing-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets' ], self::VERSION );        wp_register_script( 'mdb-unique-features-slider-widget', plugins_url( 'assets/js/unique-features-slider-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets', 'swiper' ], self::VERSION );        wp_register_script( 'mdb-comparison-table-widget', plugins_url( 'assets/js/comparison-table-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets' ], self::VERSION );
+        wp_register_script( 'mdb-measurement-guide-widget', plugins_url( 'assets/js/measurement-guide-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets' ], self::VERSION );
 
         // Enqueue main widget script on all pages with Elementor content
         wp_enqueue_script( 'mdb-custom-widgets' );
@@ -458,20 +476,28 @@ final class MDB_Custom_Widgets {
                 <?php
                 global $wp_scripts, $wp_styles;
                 
-                // Check registered scripts
+        // Check registered scripts
                 $mdb_scripts = [
                     'mdb-custom-widgets' => 'MDB Main Scripts',
                     'mdb-slider-widget' => 'MDB Slider Scripts',
                     'mdb-reviews-slider-widget' => 'MDB Reviews Slider Scripts',
                     'mdb-reviews-navigation-widget' => 'MDB Reviews Navigation Scripts',
-                    'mdb-category-scroller-widget' => 'MDB Category Scroller Scripts'
+                    'mdb-category-scroller-widget' => 'MDB Category Scroller Scripts',
+                    'mdb-instant-pricing-widget' => 'MDB Instant Pricing Scripts',
+                    'mdb-simple-reviews-widget' => 'MDB Simple Reviews Scripts',
+                    'mdb-comparison-table-widget' => 'MDB Comparison Table Scripts',
+                    'mdb-unique-features-slider-widget' => 'MDB Unique Features Scripts'
                 ];
                 
                 $mdb_styles = [
                     'mdb-custom-widgets' => 'MDB Main Styles', 
                     'mdb-slider-widget' => 'MDB Slider Styles',
                     'mdb-reviews-slider-widget' => 'MDB Reviews Slider Styles',
-                    'mdb-category-scroller-widget' => 'MDB Category Scroller Styles'
+                    'mdb-category-scroller-widget' => 'MDB Category Scroller Styles',
+                    'mdb-instant-pricing-widget' => 'MDB Instant Pricing Styles',
+                    'mdb-simple-reviews-widget' => 'MDB Simple Reviews Styles',
+                    'mdb-comparison-table-widget' => 'MDB Comparison Table Styles',
+                    'mdb-unique-features-slider-widget' => 'MDB Unique Features Styles'
                 ];
                 ?>
                 

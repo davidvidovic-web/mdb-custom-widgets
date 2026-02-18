@@ -67,6 +67,9 @@
                 this.$slides.eq(0).addClass('active');
             }
 
+            // Initialize navigation button states
+            this.updateNavigationButtons();
+
             // Sync responsive CSS variables
             this.handleResponsive();
         }
@@ -77,7 +80,18 @@
         bindEvents() {
             const self = this;
 
-            // Navigation events from navigation widgets
+            // Internal navigation buttons
+            this.$element.find('.mdb-reviews-prev').on('click', function(e) {
+                e.preventDefault();
+                self.prevSlide();
+            });
+
+            this.$element.find('.mdb-reviews-next').on('click', function(e) {
+                e.preventDefault();
+                self.nextSlide();
+            });
+
+            // Navigation events from external navigation widgets (legacy support)
             $(document).on('mdb-reviews-navigate', function(e, data) {
                 if (data.sliderId === self.sliderId) {
                     if (data.direction === 'prev') {
@@ -154,11 +168,38 @@
             $nextSlide.addClass('active').css('opacity', 1);
 
             this.currentSlide = slideIndex;
+            this.updateNavigationButtons();
             this.notifyChange();
 
             // Debug logging
             if (window.MDBWidgets && window.MDBWidgets.debug) {
                 console.log('Reviews slider changed to slide:', slideIndex);
+            }
+        }
+
+        /**
+         * Update navigation button states
+         */
+        updateNavigationButtons() {
+            const $prevBtn = this.$element.find('.mdb-reviews-prev');
+            const $nextBtn = this.$element.find('.mdb-reviews-next');
+
+            // Enable/disable buttons based on current slide
+            // Note: if looping is desired, remove the disable logic
+            if ($prevBtn.length) {
+                if (this.currentSlide === 0) {
+                    $prevBtn.attr('aria-disabled', 'true').prop('disabled', true);
+                } else {
+                    $prevBtn.attr('aria-disabled', 'false').prop('disabled', false);
+                }
+            }
+
+            if ($nextBtn.length) {
+                if (this.currentSlide === this.totalSlides - 1) {
+                    $nextBtn.attr('aria-disabled', 'true').prop('disabled', true);
+                } else {
+                    $nextBtn.attr('aria-disabled', 'false').prop('disabled', false);
+                }
             }
         }
 

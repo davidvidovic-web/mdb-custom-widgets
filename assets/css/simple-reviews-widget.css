@@ -1,0 +1,155 @@
+/**
+ * MDB Simple Reviews Widget Styles
+ */
+
+.mdb-simple-reviews-slider-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.mdb-simple-reviews-swiper {
+    padding-bottom: 50px !important; /* Space for pagination */
+    padding-left: 5px; /* Prevent shadow cut-off */
+    padding-right: 5px; /* Prevent shadow cut-off */
+}
+
+.mdb-simple-review-slide {
+    height: auto !important; /* Allow flex height for equal height cards */
+    display: flex;
+}
+
+.mdb-simple-review-card {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: relative;
+    /* Default styles set by controls */
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mdb-simple-review-card:hover {
+    transform: translateY(-5px);
+}
+
+/* Header & Rating */
+.mdb-review-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.mdb-review-stars {
+    color: #F8B600;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.mdb-review-stars i {
+    margin-right: 2px;
+}
+
+.mdb-verified-badge {
+    font-size: 12px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+/* Content */
+.mdb-review-title {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.3;
+}
+
+.mdb-review-content {
+    font-size: 14px;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1; /* Pushes footer down */
+}
+
+/* Footer */
+.mdb-review-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    border-top: 1px solid rgba(0,0,0,0.05);
+    padding-top: 15px;
+    margin-top: 10px;
+}
+
+.mdb-review-author strong {
+    display: block;
+    font-size: 15px;
+    font-weight: 600;
+}
+
+.mdb-review-date {
+    font-size: 12px;
+}
+
+/* Navigation */
+.mdb-swiper-button-prev,
+.mdb-swiper-button-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 40px;
+    height: 40px;
+    background: #fff;
+    border-radius: 50%;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    z-index: 10;
+    transition: all 0.3s ease;
+    margin-top: -25px; /* Adjust for padding-bottom */
+    font-size: 20px;
+}
+
+.mdb-swiper-button-prev:hover,
+.mdb-swiper-button-next:hover {
+    background: #f5f5f5;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+.mdb-swiper-button-prev {
+    left: -20px;
+}
+
+.mdb-swiper-button-next {
+    right: -20px;
+}
+
+/* Adjust nav position if outside container/section */
+@media (max-width: 1200px) {
+    .mdb-swiper-button-prev {
+        left: 0;
+    }
+    .mdb-swiper-button-next {
+        right: 0;
+    }
+}
+
+/* Pagination */
+.mdb-simple-reviews-slider-wrapper .swiper-pagination {
+    bottom: 0 !important;
+}
+
+.mdb-simple-reviews-slider-wrapper .swiper-pagination-bullet {
+    width: 10px;
+    height: 10px;
+    transition: all 0.3s ease;
+}
+
+.mdb-simple-reviews-slider-wrapper .swiper-pagination-bullet-active {
+    width: 25px;
+    border-radius: 5px;
+}

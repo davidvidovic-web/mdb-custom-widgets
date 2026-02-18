@@ -46,9 +46,9 @@
   --mdb-category-image-height-small-mobile: 200px;
 
   /* Typography */
-  --mdb-category-font-size: 2rem;
-  --mdb-category-font-size-tablet: 1rem;
-  --mdb-category-font-size-mobile: 0.9rem;
+  --mdb-category-font-size: 2em;
+  --mdb-category-font-size-tablet: 1em;
+  --mdb-category-font-size-mobile: 0.9em;
   --mdb-category-line-height: 1.4;
 
   /* Layout */

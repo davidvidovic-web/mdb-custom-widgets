@@ -16,7 +16,7 @@
   --mdb-reviews-person-color: #444d5f;
   --mdb-reviews-person-title-color: #888888;
   --mdb-reviews-rating-color: #ffa500;
-  --mdb-reviews-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  --mdb-reviews-shadow: 2px 2px 10px 0px rgb(0 0 0 / 10%);
 
   /* Reviews Layout */
   --mdb-reviews-column-count: 2;
@@ -28,13 +28,13 @@
   --mdb-reviews-footer-margin: 15px;
 
   /* Reviews Typography */
-  --mdb-reviews-title-font-size: 1.25rem;
+  --mdb-reviews-title-font-size: 1.25em;
   --mdb-reviews-title-line-height: 1.3;
-  --mdb-reviews-text-font-size: 1rem;
+  --mdb-reviews-text-font-size: 1em;
   --mdb-reviews-text-line-height: 1.6;
-  --mdb-reviews-person-font-size: 0.95rem;
-  --mdb-reviews-person-title-font-size: 0.85rem;
-  --mdb-reviews-rating-font-size: 1.1rem;
+  --mdb-reviews-person-font-size: 0.95em;
+  --mdb-reviews-person-title-font-size: 0.85em;
+  --mdb-reviews-rating-font-size: 1.1em;
 
   /* Reviews Transitions */
   --mdb-reviews-transition: all 0.3s ease;
@@ -42,8 +42,8 @@
   /* Reviews Mobile Adjustments */
   --mdb-reviews-mobile-padding: 20px;
   --mdb-reviews-mobile-gap: 15px;
-  --mdb-reviews-mobile-title-font-size: 1.1rem;
-  --mdb-reviews-mobile-text-font-size: 0.9rem;
+  --mdb-reviews-mobile-title-font-size: 1.1em;
+  --mdb-reviews-mobile-text-font-size: 0.9em;
 }
 
 /* Main Container */
@@ -58,7 +58,7 @@
 .mdb-reviews-slider-widget .mdb-reviews-slider-container {
   overflow: hidden !important;
   position: relative !important;
-  padding: 30px;
+  padding: 5px;
 }
 
 /* Reviews Grid */
@@ -123,7 +123,7 @@
 .elementor-widget-mdb-reviews-slider .mdb-review-card:hover,
 .mdb-reviews-slider-widget .mdb-review-card:hover {
   transform: translateY(-2px) !important;
-  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.15) !important;
+  box-shadow: 2px 2px 10px 0px rgb(0 0 0 / 40%);
 }
 
 /* Review Header */
@@ -272,19 +272,19 @@
   }
 
   .mdb-review-title {
-    font-size: 1rem !important;
+    font-size: 1em !important;
   }
 
   .mdb-review-text {
-    font-size: 0.85rem !important;
+    font-size: 0.85em !important;
   }
 
   .mdb-review-person-name {
-    font-size: 0.9rem !important;
+    font-size: 0.9em !important;
   }
 
   .mdb-review-person-title {
-    font-size: 0.8rem !important;
+    font-size: 0.8em !important;
   }
 }
 
@@ -293,6 +293,163 @@
   .mdb-reviews-slide,
   .mdb-review-card {
     transition: none !important;
+  }
+}
+
+/* ========================================
+   NAVIGATION CONTROLS STYLES
+   ======================================== */
+
+/* Navigation Buttons Container */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-navigation,
+.mdb-reviews-slider-widget .mdb-reviews-navigation {
+  display: flex !important;
+  flex-wrap: nowrap !important;
+  align-items: center !important;
+  gap: 10px !important;
+  position: relative !important;
+  overflow: visible !important;
+  z-index: 10 !important;
+  min-height: 60px !important;
+  width: auto !important;
+  margin-top: 20px;
+}
+
+/* Navigation Buttons - Base Styles */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-nav-btn,
+.mdb-reviews-slider-widget .mdb-reviews-nav-btn {
+  /* Display & Layout */
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  position: relative !important;
+  
+  /* Sizing - DEFAULT VALUES (Elementor can override) */
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  min-height: 60px;
+  flex-shrink: 0 !important;
+  flex-grow: 0 !important;
+  
+  /* Appearance - DEFAULT VALUES (Elementor can override) */
+  background-color: transparent;
+  border: 2px solid #007cba;
+  border-radius: 50%;
+  color: #007cba;
+  
+  /* Typography - DEFAULT VALUES (Elementor can override) */
+  font-size: 16px;
+  line-height: 1 !important;
+  font-style: normal !important;
+  font-weight: normal;
+  text-decoration: none !important;
+  
+  /* Behavior */
+  cursor: pointer !important;
+  user-select: none !important;
+  transition: all 0.3s ease;
+  pointer-events: auto !important;
+  
+  /* Visibility & Stacking */
+  opacity: 1 !important;
+  visibility: visible !important;
+  z-index: 10 !important;
+  overflow: visible !important;
+  
+  /* Reset Elementor Defaults */
+  margin: 0 !important;
+  padding: 0 !important;
+  box-sizing: border-box !important;
+}
+
+/* Icon inside Button */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-nav-btn i,
+.mdb-reviews-slider-widget .mdb-reviews-nav-btn i {
+  display: inline-block !important;
+  line-height: 1 !important;
+  pointer-events: none !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-size: inherit !important;
+}
+
+/* Elementor Icon Specificity */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-nav-btn .eicon,
+.mdb-reviews-slider-widget .mdb-reviews-nav-btn .eicon,
+.elementor-widget-mdb-reviews-slider .mdb-reviews-nav-btn [class^="eicon-"],
+.mdb-reviews-slider-widget .mdb-reviews-nav-btn [class^="eicon-"] {
+  display: inline-block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  font-family: eicons !important;
+  font-style: normal !important;
+  font-weight: normal !important;
+  font-variant: normal !important;
+  text-transform: none !important;
+  line-height: 1 !important;
+  -webkit-font-smoothing: antialiased !important;
+  -moz-osx-font-smoothing: grayscale !important;
+}
+
+/* Hover State - DEFAULT VALUES (Elementor can override) */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-nav-btn:hover,
+.mdb-reviews-slider-widget .mdb-reviews-nav-btn:hover {
+  background-color: #007cba;
+  color: #ffffff;
+  border-color: #007cba;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 124, 186, 0.15);
+}
+
+/* Focus State for Accessibility */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-nav-btn:focus,
+.mdb-reviews-slider-widget .mdb-reviews-nav-btn:focus {
+  outline: 2px solid #007cba !important;
+  outline-offset: 2px !important;
+  box-shadow: 0 0 0 3px rgba(0, 124, 186, 0.1) !important;
+}
+
+/* Disabled State */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-nav-btn:disabled,
+.mdb-reviews-slider-widget .mdb-reviews-nav-btn:disabled {
+  opacity: 0.5 !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  color: #cccccc;
+}
+
+/* Active State */
+.elementor-widget-mdb-reviews-slider .mdb-reviews-nav-btn.active,
+.mdb-reviews-slider-widget .mdb-reviews-nav-btn.active {
+  background-color: #007cba;
+  color: #ffffff;
+  border-color: #007cba;
+}
+
+/* Responsive Navigation */
+@media (max-width: 1024px) {
+  .mdb-reviews-slider-widget .mdb-reviews-nav-btn {
+    width: 48px;
+    height: 48px;
+    min-width: 48px;
+    min-height: 48px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 767px) {
+  .mdb-reviews-slider-widget .mdb-reviews-navigation {
+    gap: 8px !important;
+    margin-top: 15px;
+  }
+
+  .mdb-reviews-slider-widget .mdb-reviews-nav-btn {
+    width: 40px;
+    height: 40px;
+    min-width: 40px;
+    min-height: 40px;
+    font-size: 12px;
   }
 }
 

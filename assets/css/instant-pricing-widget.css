@@ -1,0 +1,231 @@
+/**
+ * MDB Instant Pricing Widget Styles
+ */
+
+/* Main Container */
+.mdb-instant-pricing-widget {
+  font-family: inherit;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.mdb-pricing-left li {
+  list-style: none !important;
+}
+
+.mdb-pricing-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 40px;
+  margin-bottom: 20px;
+}
+
+/* Left Column */
+.mdb-pricing-left {
+  flex: 1;
+  min-width: 300px;
+}
+
+.mdb-pricing-inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-bottom: 25px;
+  max-width: 400px;
+}
+
+.mdb-input-group {
+  position: relative;
+  width: 100%;
+}
+
+.mdb-input-wrapper {
+  position: relative;
+}
+
+.mdb-pricing-input {
+  width: 100%;
+  padding: 12px 15px;
+  font-size: 16px;
+  border: 1px solid #7a828e;
+  border-radius: 0;
+  color: #444;
+  background-color: #fff;
+  -webkit-appearance: none;
+  -moz-appearance: textfield;
+}
+
+/* Simulate select arrow for input (as per design) */
+.mdb-select-arrow {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid #888;
+  margin-top: -8px; /* Offset for the top arrow */
+}
+
+.mdb-select-arrow::after {
+  content: "";
+  position: absolute;
+  left: -5px;
+  top: 8px; /* Spacing between arrows */
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid #888;
+}
+
+.mdb-input-help {
+  font-size: 12px;
+  color: #cccccc;
+  margin-top: 5px;
+  font-weight: 300;
+}
+
+.mdb-pricing-features {
+  list-style: none;
+  padding: 0;
+  margin: 30px 0 0 0;
+}
+
+.mdb-pricing-features li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  font-size: 15px;
+  color: #444d5f;
+  line-height: 1.4;
+}
+
+.mdb-feature-icon {
+  font-weight: bold;
+  margin-right: 10px;
+  color: #333;
+}
+
+/* Right Column */
+.mdb-pricing-right {
+  flex: 2;
+  min-width: 300px;
+}
+
+.mdb-pricing-cards {
+  display: flex;
+  gap: 20px;
+  height: 100%;
+}
+
+.mdb-pricing-card {
+  flex: 1;
+  border: 1px solid #e0e0e0;
+  background: #fff;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 200px;
+  transition: box-shadow 0.3s ease;
+}
+
+.mdb-pricing-card:hover {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+.mdb-card-image {
+  width: 100%;
+  height: 180px;
+  overflow: hidden;
+  background-color: #f0f4f8; /* Fallback placeholder color */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.mdb-card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.mdb-card-content {
+  padding: 25px 20px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.mdb-card-title {
+  font-size: 1.25em;
+  font-weight: 600;
+  color: #444d5f;
+  margin: 0 0 5px 0;
+}
+
+.mdb-card-price-wrapper {
+  margin-bottom: 20px;
+  font-size: 1em;
+  color: #666;
+}
+
+.mdb-card-price {
+  color: #49c3c9;
+  font-weight: 600;
+  font-size: 1.1em;
+}
+
+.mdb-card-description {
+  font-size: 0.85em;
+  color: #888;
+  line-height: 1.5;
+}
+
+.mdb-card-description ul {
+  list-style: none !important;
+  padding: 0;
+  margin: 0;
+}
+
+.mdb-card-description li {
+  margin-bottom: 5px;
+  list-style: none !important;
+}
+
+.mdb-pricing-disclaimer {
+  text-align: center;
+  font-size: 0.9em;
+  color: #ccc;
+  margin-top: 30px;
+  width: 100%;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+  .mdb-pricing-container {
+    flex-direction: column;
+  }
+
+  .mdb-pricing-left,
+  .mdb-pricing-right {
+    width: 100%;
+  }
+
+  .mdb-pricing-inputs {
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .mdb-pricing-cards {
+    flex-direction: column;
+  }
+
+  .mdb-pricing-heading {
+    font-size: 1.8em;
+  }
+}
