@@ -125,29 +125,7 @@ class MDB_Slider_Widget extends MDB_Widget_Base
         $repeater->add_control(
             'image_1',
             [
-                'label' => esc_html__('Image 1 (Left)', 'mdb-custom-widgets'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        $repeater->add_control(
-            'image_2',
-            [
-                'label' => esc_html__('Image 2 (Center)', 'mdb-custom-widgets'),
-                'type' => \Elementor\Controls_Manager::MEDIA,
-                'default' => [
-                    'url' => \Elementor\Utils::get_placeholder_image_src(),
-                ],
-            ]
-        );
-
-        $repeater->add_control(
-            'image_3',
-            [
-                'label' => esc_html__('Image 3 (Right)', 'mdb-custom-widgets'),
+                'label' => esc_html__('Slide Image', 'mdb-custom-widgets'),
                 'type' => \Elementor\Controls_Manager::MEDIA,
                 'default' => [
                     'url' => \Elementor\Utils::get_placeholder_image_src(),
@@ -438,28 +416,10 @@ class MDB_Slider_Widget extends MDB_Widget_Base
                         <div class="mdb-slide-images <?php echo $index === 0 ? 'active' : ''; ?>" data-slide="<?php echo esc_attr($index); ?>">
                             <div class="mdb-slider-images-container">
                                 <?php if (! empty($slide['image_1']['url'])) : ?>
-                                    <div class="mdb-image-wrapper mdb-image-1-wrapper">
+                                    <div class="mdb-image-wrapper">
                                         <img src="<?php echo esc_url($slide['image_1']['url']); ?>"
-                                            alt="<?php echo esc_attr($slide['image_1']['alt'] ?? $slide['slide_title'] . ' - Image 1'); ?>"
-                                            class="mdb-slider-image mdb-image-1"
-                                            loading="lazy">
-                                    </div>
-                                <?php endif; ?>
-
-                                <?php if (! empty($slide['image_2']['url'])) : ?>
-                                    <div class="mdb-image-wrapper mdb-image-2-wrapper">
-                                        <img src="<?php echo esc_url($slide['image_2']['url']); ?>"
-                                            alt="<?php echo esc_attr($slide['image_2']['alt'] ?? $slide['slide_title'] . ' - Image 2'); ?>"
-                                            class="mdb-slider-image mdb-image-2"
-                                            loading="lazy">
-                                    </div>
-                                <?php endif; ?>
-
-                                <?php if (! empty($slide['image_3']['url'])) : ?>
-                                    <div class="mdb-image-wrapper mdb-image-3-wrapper">
-                                        <img src="<?php echo esc_url($slide['image_3']['url']); ?>"
-                                            alt="<?php echo esc_attr($slide['image_3']['alt'] ?? $slide['slide_title'] . ' - Image 3'); ?>"
-                                            class="mdb-slider-image mdb-image-3"
+                                            alt="<?php echo esc_attr($slide['image_1']['alt'] ?? $slide['slide_title'] . ' - Image'); ?>"
+                                            class="mdb-slider-image"
                                             loading="lazy">
                                     </div>
                                 <?php endif; ?>
@@ -583,31 +543,15 @@ class MDB_Slider_Widget extends MDB_Widget_Base
                             <div class="mdb-slide-images {{{ index === 0 ? 'active' : '' }}}" data-slide="{{{ index }}}">
                                 <div class="mdb-slider-images-container">
                                     <# if ( slide.image_1 && slide.image_1.url ) { #>
-                                        <div class="mdb-image-wrapper mdb-image-1-wrapper">
+                                        <div class="mdb-image-wrapper">
                                             <img src="{{{ slide.image_1.url }}}"
-                                                alt="{{{ slide.image_1.alt || slide.slide_title + ' - Image 1' }}}"
-                                                class="mdb-slider-image mdb-image-1">
+                                                alt="{{{ slide.image_1.alt || slide.slide_title + ' - Image' }}}"
+                                                class="mdb-slider-image">
                                         </div>
-                                        <# } #>
-
-                                            <# if ( slide.image_2 && slide.image_2.url ) { #>
-                                                <div class="mdb-image-wrapper mdb-image-2-wrapper">
-                                                    <img src="{{{ slide.image_2.url }}}"
-                                                        alt="{{{ slide.image_2.alt || slide.slide_title + ' - Image 2' }}}"
-                                                        class="mdb-slider-image mdb-image-2">
-                                                </div>
-                                                <# } #>
-
-                                                    <# if ( slide.image_3 && slide.image_3.url ) { #>
-                                                        <div class="mdb-image-wrapper mdb-image-3-wrapper">
-                                                            <img src="{{{ slide.image_3.url }}}"
-                                                                alt="{{{ slide.image_3.alt || slide.slide_title + ' - Image 3' }}}"
-                                                                class="mdb-slider-image mdb-image-3">
-                                                        </div>
-                                                        <# } #>
+                                    <# } #>
                                 </div>
                             </div>
-                            <# } ); #>
+                        <# } ); #>
                     </div>
                 </div>
             </div>

@@ -278,6 +278,9 @@ final class MDB_Custom_Widgets {
         require_once( __DIR__ . '/includes/widgets/comparison-table-widget.php' );
         require_once( __DIR__ . '/includes/widgets/unique-features-slider-widget.php' );
         require_once( __DIR__ . '/includes/widgets/measurement-guide-widget.php' );
+        require_once( __DIR__ . '/includes/widgets/product-customizer-widget.php' );
+        require_once( __DIR__ . '/includes/widgets/feature-grid-widget.php' );
+        require_once( __DIR__ . '/includes/widgets/scroll-zoom-widget.php' );
 
         // Register widgets with error handling
         try {
@@ -290,6 +293,9 @@ final class MDB_Custom_Widgets {
             $widgets_manager->register( new MDB_Comparison_Table_Widget() );
             $widgets_manager->register( new MDB_Unique_Features_Slider_Widget() );
             $widgets_manager->register( new MDB_Measurement_Guide_Widget() );
+            $widgets_manager->register( new MDB_Product_Customizer_Widget() );
+            $widgets_manager->register( new MDB_Feature_Grid_Widget() );
+            $widgets_manager->register( new MDB_Scroll_Zoom_Widget() );
             
             // Debug: Log successful registration
             if ( WP_DEBUG ) {
@@ -344,6 +350,9 @@ final class MDB_Custom_Widgets {
         wp_register_style( 'mdb-comparison-table-widget', plugins_url( 'assets/css/comparison-table-widget.css', __FILE__ ), [], self::VERSION );
         wp_register_style( 'mdb-unique-features-slider-widget', plugins_url( 'assets/css/unique-features-slider-widget.css', __FILE__ ), [], self::VERSION );
         wp_register_style( 'mdb-measurement-guide-widget', plugins_url( 'assets/css/measurement-guide-widget.css', __FILE__ ), [], self::VERSION );
+        wp_register_style( 'mdb-product-customizer-widget', plugins_url( 'assets/css/product-customizer-widget.css', __FILE__ ), [], self::VERSION );
+        wp_register_style( 'mdb-feature-grid-widget', plugins_url( 'assets/css/feature-grid-widget.css', __FILE__ ), [], self::VERSION );
+        wp_register_style( 'mdb-scroll-zoom-widget', plugins_url( 'assets/css/scroll-zoom-widget.css', __FILE__ ), [], self::VERSION );
 
         // Enqueue main widget styles on all pages with Elementor content
         wp_enqueue_style( 'mdb-custom-widgets' );
@@ -378,6 +387,13 @@ final class MDB_Custom_Widgets {
         wp_register_script( 'mdb-simple-reviews-widget', plugins_url( 'assets/js/simple-reviews-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets', 'swiper' ], self::VERSION );
         wp_register_script( 'mdb-instant-pricing-widget', plugins_url( 'assets/js/instant-pricing-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets' ], self::VERSION );        wp_register_script( 'mdb-unique-features-slider-widget', plugins_url( 'assets/js/unique-features-slider-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets', 'swiper' ], self::VERSION );        wp_register_script( 'mdb-comparison-table-widget', plugins_url( 'assets/js/comparison-table-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets' ], self::VERSION );
         wp_register_script( 'mdb-measurement-guide-widget', plugins_url( 'assets/js/measurement-guide-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets' ], self::VERSION );
+        wp_register_script( 'mdb-product-customizer-widget', plugins_url( 'assets/js/product-customizer-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets' ], self::VERSION );
+        wp_register_script( 'mdb-feature-grid-widget', plugins_url( 'assets/js/feature-grid-widget.js', __FILE__ ), [ 'jquery', 'mdb-custom-widgets' ], self::VERSION );
+
+        // GSAP + ScrollTrigger for scroll-zoom widget
+        wp_register_script( 'gsap', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js', [], '3.12.5', true );
+        wp_register_script( 'gsap-scrolltrigger', 'https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js', [ 'gsap' ], '3.12.5', true );
+        wp_register_script( 'mdb-scroll-zoom-widget', plugins_url( 'assets/js/scroll-zoom-widget.js', __FILE__ ), [ 'gsap', 'gsap-scrolltrigger' ], self::VERSION, true );
 
         // Enqueue main widget script on all pages with Elementor content
         wp_enqueue_script( 'mdb-custom-widgets' );
@@ -486,7 +502,8 @@ final class MDB_Custom_Widgets {
                     'mdb-instant-pricing-widget' => 'MDB Instant Pricing Scripts',
                     'mdb-simple-reviews-widget' => 'MDB Simple Reviews Scripts',
                     'mdb-comparison-table-widget' => 'MDB Comparison Table Scripts',
-                    'mdb-unique-features-slider-widget' => 'MDB Unique Features Scripts'
+                    'mdb-unique-features-slider-widget' => 'MDB Unique Features Scripts',
+                    'mdb-product-customizer-widget'     => 'MDB Product Customizer Scripts'
                 ];
                 
                 $mdb_styles = [
@@ -497,7 +514,8 @@ final class MDB_Custom_Widgets {
                     'mdb-instant-pricing-widget' => 'MDB Instant Pricing Styles',
                     'mdb-simple-reviews-widget' => 'MDB Simple Reviews Styles',
                     'mdb-comparison-table-widget' => 'MDB Comparison Table Styles',
-                    'mdb-unique-features-slider-widget' => 'MDB Unique Features Styles'
+                    'mdb-unique-features-slider-widget' => 'MDB Unique Features Styles',
+                    'mdb-product-customizer-widget'     => 'MDB Product Customizer Styles'
                 ];
                 ?>
                 

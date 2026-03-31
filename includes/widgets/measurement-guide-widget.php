@@ -153,119 +153,95 @@ class MDB_Measurement_Guide_Widget extends MDB_Widget_Base {
 
 		$this->end_controls_section();
 
-		// Video 1 Section
+		// Videos Repeater Section
 		$this->start_controls_section(
-			'section_video_1',
+			'section_videos',
 			[
-				'label' => esc_html__( 'Video 1 (Top)', 'mdb-custom-widgets' ),
+				'label' => esc_html__( 'Videos', 'mdb-custom-widgets' ),
 				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
 			]
 		);
 
-		$this->add_control(
-			'video_1_title',
+		$repeater = new \Elementor\Repeater();
+
+		$repeater->add_control(
+			'video_title',
 			[
-				'label' => esc_html__( 'Title', 'mdb-custom-widgets' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'label'   => esc_html__( 'Title', 'mdb-custom-widgets' ),
+				'type'    => \Elementor\Controls_Manager::TEXT,
 				'default' => esc_html__( 'How to Measure:', 'mdb-custom-widgets' ),
 			]
 		);
 
-		$this->add_control(
-			'video_1_subtitle',
+		$repeater->add_control(
+			'video_subtitle',
 			[
-				'label' => esc_html__( 'Subtitle', 'mdb-custom-widgets' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Face Mount Measuring', 'mdb-custom-widgets' ),
+				'label'   => esc_html__( 'Subtitle', 'mdb-custom-widgets' ),
+				'type'    => \Elementor\Controls_Manager::TEXT,
+				'default' => esc_html__( 'Measuring Guide', 'mdb-custom-widgets' ),
 			]
 		);
 
-		$this->add_control(
-			'video_1_duration',
+		$repeater->add_control(
+			'video_duration',
 			[
-				'label' => esc_html__( 'Duration', 'mdb-custom-widgets' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
+				'label'   => esc_html__( 'Duration', 'mdb-custom-widgets' ),
+				'type'    => \Elementor\Controls_Manager::TEXT,
 				'default' => esc_html__( '1:35', 'mdb-custom-widgets' ),
 			]
 		);
 
-		$this->add_control(
-			'video_1_link',
+		$repeater->add_control(
+			'video_link',
 			[
-				'label' => esc_html__( 'Video Link', 'mdb-custom-widgets' ),
-				'type' => \Elementor\Controls_Manager::URL,
+				'label'       => esc_html__( 'Video Link', 'mdb-custom-widgets' ),
+				'type'        => \Elementor\Controls_Manager::URL,
 				'placeholder' => esc_html__( 'https://your-link.com', 'mdb-custom-widgets' ),
-				'default' => [
-					'url' => '#',
-				],
+				'default'     => [ 'url' => '#' ],
 			]
 		);
 
-		$this->add_control(
-			'video_1_thumbnail',
+		$repeater->add_control(
+			'video_thumbnail_image',
 			[
-				'label' => esc_html__( 'Thumbnail Color/Image', 'mdb-custom-widgets' ),
-				'type' => \Elementor\Controls_Manager::COLOR, // Using color for simplicity based on image, but could be image
-				'default' => '#3bc0c3', // Teal color from design
+				'label'       => esc_html__( 'Thumbnail Image', 'mdb-custom-widgets' ),
+				'type'        => \Elementor\Controls_Manager::MEDIA,
+				'description' => esc_html__( 'If set, overrides the thumbnail color.', 'mdb-custom-widgets' ),
 			]
 		);
 
-		$this->end_controls_section();
-
-		// Video 2 Section
-		$this->start_controls_section(
-			'section_video_2',
+		$repeater->add_control(
+			'video_thumbnail',
 			[
-				'label' => esc_html__( 'Video 2 (Bottom)', 'mdb-custom-widgets' ),
-				'tab' => \Elementor\Controls_Manager::TAB_CONTENT,
-			]
-		);
-
-		$this->add_control(
-			'video_2_title',
-			[
-				'label' => esc_html__( 'Title', 'mdb-custom-widgets' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'How to Measure:', 'mdb-custom-widgets' ),
-			]
-		);
-
-		$this->add_control(
-			'video_2_subtitle',
-			[
-				'label' => esc_html__( 'Subtitle', 'mdb-custom-widgets' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( 'Inside Mount Measuring', 'mdb-custom-widgets' ),
-			]
-		);
-
-		$this->add_control(
-			'video_2_duration',
-			[
-				'label' => esc_html__( 'Duration', 'mdb-custom-widgets' ),
-				'type' => \Elementor\Controls_Manager::TEXT,
-				'default' => esc_html__( '1:35', 'mdb-custom-widgets' ),
-			]
-		);
-
-		$this->add_control(
-			'video_2_link',
-			[
-				'label' => esc_html__( 'Video Link', 'mdb-custom-widgets' ),
-				'type' => \Elementor\Controls_Manager::URL,
-				'placeholder' => esc_html__( 'https://your-link.com', 'mdb-custom-widgets' ),
-				'default' => [
-					'url' => '#',
-				],
-			]
-		);
-
-		$this->add_control(
-			'video_2_thumbnail',
-			[
-				'label' => esc_html__( 'Thumbnail Color/Image', 'mdb-custom-widgets' ),
-				'type' => \Elementor\Controls_Manager::COLOR,
+				'label'   => esc_html__( 'Thumbnail Color', 'mdb-custom-widgets' ),
+				'type'    => \Elementor\Controls_Manager::COLOR,
 				'default' => '#3bc0c3',
+			]
+		);
+
+		$this->add_control(
+			'videos',
+			[
+				'label'       => esc_html__( 'Videos', 'mdb-custom-widgets' ),
+				'type'        => \Elementor\Controls_Manager::REPEATER,
+				'fields'      => $repeater->get_controls(),
+				'default'     => [
+					[
+						'video_title'    => esc_html__( 'How to Measure:', 'mdb-custom-widgets' ),
+						'video_subtitle' => esc_html__( 'Face Mount Measuring', 'mdb-custom-widgets' ),
+						'video_duration' => '1:35',
+						'video_thumbnail' => '#3bc0c3',
+					],
+					[
+						'video_title'    => esc_html__( 'How to Measure:', 'mdb-custom-widgets' ),
+						'video_subtitle' => esc_html__( 'Inside Mount Measuring', 'mdb-custom-widgets' ),
+						'video_duration' => '1:35',
+						'video_thumbnail' => '#3bc0c3',
+					],
+				],
+				'title_field' => '{{{ video_title }}} — {{{ video_subtitle }}}',
+				'min_items'   => 1,
+				'max_items'   => 5,
 			]
 		);
 
@@ -344,55 +320,40 @@ class MDB_Measurement_Guide_Widget extends MDB_Widget_Base {
 	 */
 	protected function render() {
 		$settings = $this->get_settings_for_display();
-
-		$video_1_url = $settings['video_1_link']['url'];
-		$video_2_url = $settings['video_2_link']['url'];
-
-		$this->add_render_attribute( 'video_1_link', 'href', $video_1_url );
-		$this->add_render_attribute( 'video_2_link', 'href', $video_2_url );
-
-		if ( $settings['video_1_link']['is_external'] ) {
-			$this->add_render_attribute( 'video_1_link', 'target', '_blank' );
-		}
-		if ( $settings['video_1_link']['nofollow'] ) {
-			$this->add_render_attribute( 'video_1_link', 'rel', 'nofollow' );
-		}
-
-		if ( $settings['video_2_link']['is_external'] ) {
-			$this->add_render_attribute( 'video_2_link', 'target', '_blank' );
-		}
-		if ( $settings['video_2_link']['nofollow'] ) {
-			$this->add_render_attribute( 'video_2_link', 'rel', 'nofollow' );
-		}
+		$videos   = $settings['videos'] ?? [];
 		?>
 		<div class="mdb-measurement-guide" style="background-image: url('<?php echo esc_url( $settings['background_image']['url'] ); ?>');">
 			<div class="mdb-mg-overlay"></div>
-			
-			<div class="mdb-mg-videos-container">
-				
-				<!-- Video 1 -->
-				<a <?php echo $this->get_render_attribute_string( 'video_1_link' ); ?> class="mdb-mg-video-card">
-					<div class="mdb-mg-video-thumbnail" style="background-color: <?php echo esc_attr( $settings['video_1_thumbnail'] ); ?>;">
-						<i class="eicon-play" aria-hidden="true"></i>
-					</div>
-					<div class="mdb-mg-video-info">
-						<h4 class="mdb-mg-video-title"><?php echo esc_html( $settings['video_1_title'] ); ?></h4>
-						<p class="mdb-mg-video-subtitle"><?php echo esc_html( $settings['video_1_subtitle'] ); ?></p>
-						<span class="mdb-mg-video-duration"><?php echo esc_html( $settings['video_1_duration'] ); ?></span>
-					</div>
-				</a>
 
-				<!-- Video 2 -->
-				<a <?php echo $this->get_render_attribute_string( 'video_2_link' ); ?> class="mdb-mg-video-card">
-					<div class="mdb-mg-video-thumbnail" style="background-color: <?php echo esc_attr( $settings['video_2_thumbnail'] ); ?>;">
+			<div class="mdb-mg-videos-container">
+
+				<?php foreach ( $videos as $index => $video ) :
+					$link_key = 'video_link_' . $index;
+					$video_url = ! empty( $video['video_link']['url'] ) ? $video['video_link']['url'] : '#';
+					$this->add_render_attribute( $link_key, 'href', $video_url );
+					$this->add_render_attribute( $link_key, 'class', 'mdb-mg-video-card' );
+					$this->add_render_attribute( $link_key, 'data-video-url', $video_url );
+					if ( ! empty( $video['video_link']['nofollow'] ) ) {
+						$this->add_render_attribute( $link_key, 'rel', 'nofollow' );
+					}
+					// Thumbnail: image takes priority over color
+					$has_thumb_img = ! empty( $video['video_thumbnail_image']['url'] );
+					$thumb_style   = $has_thumb_img ? '' : 'background-color: ' . esc_attr( $video['video_thumbnail'] ) . ';';
+				?>
+				<a <?php echo $this->get_render_attribute_string( $link_key ); ?>>
+					<div class="mdb-mg-video-thumbnail" style="<?php echo $thumb_style; ?>">
+						<?php if ( $has_thumb_img ) : ?>
+							<img src="<?php echo esc_url( $video['video_thumbnail_image']['url'] ); ?>" alt="" loading="lazy">
+						<?php endif; ?>
 						<i class="eicon-play" aria-hidden="true"></i>
 					</div>
 					<div class="mdb-mg-video-info">
-						<h4 class="mdb-mg-video-title"><?php echo esc_html( $settings['video_2_title'] ); ?></h4>
-						<p class="mdb-mg-video-subtitle"><?php echo esc_html( $settings['video_2_subtitle'] ); ?></p>
-						<span class="mdb-mg-video-duration"><?php echo esc_html( $settings['video_2_duration'] ); ?></span>
+						<h4 class="mdb-mg-video-title"><?php echo esc_html( $video['video_title'] ); ?></h4>
+						<p class="mdb-mg-video-subtitle"><?php echo esc_html( $video['video_subtitle'] ); ?></p>
+						<span class="mdb-mg-video-duration"><?php echo esc_html( $video['video_duration'] ); ?></span>
 					</div>
 				</a>
+				<?php endforeach; ?>
 
 			</div>
 		</div>

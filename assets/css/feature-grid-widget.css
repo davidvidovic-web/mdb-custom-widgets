@@ -1,0 +1,121 @@
+/**
+ * MDB Feature Grid Widget CSS
+ */
+
+/* ── Wrapper & Grid ─────────────────────────────────────────────────────── */
+
+.mdb-feature-grid-wrapper {
+	width: 100%;
+}
+
+.mdb-feature-grid {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr); /* Elementor responsive controls override this */
+	gap: 20px;
+}
+
+/* ── Card ───────────────────────────────────────────────────────────────── */
+
+.mdb-feature-grid-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: stretch;
+	width: 100%;
+	padding: 30px;
+	box-sizing: border-box;
+	text-decoration: none;
+	color: inherit;
+	transition-property: background-color, box-shadow, border-color;
+	transition-duration: 300ms;
+	transition-timing-function: ease;
+}
+
+a.mdb-feature-grid-card {
+	cursor: pointer;
+}
+
+a.mdb-feature-grid-card:hover,
+a.mdb-feature-grid-card:focus {
+	text-decoration: none;
+	color: inherit;
+}
+
+/* ── Image ──────────────────────────────────────────────────────────────── */
+
+.mdb-feature-grid-image {
+	display: flex;
+	justify-content: flex-start; /* overridden by Elementor image_alignment control */
+	margin-bottom: 20px;         /* overridden by Elementor image_spacing control */
+}
+
+.mdb-feature-grid-image img {
+	display: block;
+	width: 100%;
+	height: auto;
+	object-position: center;
+}
+
+/* ── Title ──────────────────────────────────────────────────────────────── */
+
+.mdb-feature-grid-title {
+	margin: 0 0 12px; /* bottom overridden by Elementor title_spacing control */
+	padding: 0;
+	font-size: 1.1em;
+	font-weight: 600;
+	line-height: 1.3;
+}
+
+/* ── Description ────────────────────────────────────────────────────────── */
+
+.mdb-feature-grid-description {
+	margin: 0;
+	flex: 1 1 auto; /* push arrow to bottom when card is flex column */
+	line-height: 1.6;
+}
+
+/* ── Hover Arrow ────────────────────────────────────────────────────────── */
+
+.mdb-feature-grid-arrow {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	margin-top: 16px;
+	color: #4ecdc4; /* default — overridden by Elementor control */
+	opacity: 0;
+	transform: translateY(-8px);
+	transition: opacity 300ms ease, transform 300ms ease;
+	pointer-events: none;
+}
+
+.mdb-feature-grid-arrow svg {
+	display: block;
+	width: 24px;
+	height: 24px;
+}
+
+.mdb-feature-grid-card:hover .mdb-feature-grid-arrow,
+.mdb-feature-grid-card:focus .mdb-feature-grid-arrow {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+/* When arrow is enabled, reserve bottom space so it doesn't overlap content */
+.mdb-feature-grid-card.has-hover-arrow {
+	padding-bottom: 45px;
+}
+
+/* ── Responsive fallbacks (Elementor responsive controls override at breakpoints) ── */
+
+@media (max-width: 1024px) {
+	.mdb-feature-grid {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media (max-width: 767px) {
+	.mdb-feature-grid {
+		grid-template-columns: 1fr;
+	}
+}

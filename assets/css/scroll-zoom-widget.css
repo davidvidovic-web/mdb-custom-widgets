@@ -1,0 +1,45 @@
+/* ============================================================
+   MDB Scroll Zoom Widget
+   ============================================================ */
+
+.mdb-scroll-zoom {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    overflow: hidden;
+}
+
+/* Heading */
+.mdb-scroll-zoom__heading {
+    margin: 0 0 32px;
+    padding: 0;
+    line-height: 1.3;
+    width: 100%;
+}
+
+/* Image wrapper — sized to reserve final space; overflow visible so the
+   image can sit above before the animation lands it into position */
+.mdb-scroll-zoom__image-wrap {
+    width: 100%;
+    max-width: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: visible;
+    will-change: transform;
+}
+
+/* Image */
+.mdb-scroll-zoom__image {
+    width: 100%;
+    height: auto;
+    display: block;
+    transform-origin: center center;
+    will-change: transform;
+}
+
+/* Elementor editor: disable the pinned-position tricks so the panel stays usable */
+.elementor-editor-active .mdb-scroll-zoom__image {
+    transform: none !important;
+}
